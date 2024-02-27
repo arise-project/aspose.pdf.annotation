@@ -1,0 +1,33 @@
+
+.DS_Store
+Temp/
+obj/
+classes/
+generated/
+*.suo
+bin/
+* Out*
+*_out_*
+*_out*
+* out*
+*.ldb
+Thumbs.db
+_ReSharper*/
+out/
+*.lic
+*.user
+Out/
+Out*/
+TestResults/
+*.vsmdi
+test-results/
+*.userprefs
+.vs/
+*.nupkg
+packages/
+Showcases/aspose-pdf-editor/operator_Evgeny Pirogov.json
+/operator_Evgeny Pirogov.json
+Showcases/aspose-pdf-editor/pdf-editor-mvc/operator_Evgeny Pirogov.json
+Showcases/aspose-pdf-translate/operator_Evgeny Pirogov.json
+temp/
+.idea/
