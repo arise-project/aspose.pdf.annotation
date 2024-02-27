@@ -1,10 +1,18 @@
 using Aspose.Pdf;
+using aspose.pdf.annotation.Model;
 using Aspose.Pdf.Annotations;
 
 namespace aspose.pdf.annotation;
 
 public class StrikeOutAnnotator : IAnnotator
 {
+    private readonly StrikeOutModel _model;
+
+    public StrikeOutAnnotator(StrikeOutModel model)
+    {
+        _model = model;
+    }
+    
     public void Add()
     {
         // Load the PDF file

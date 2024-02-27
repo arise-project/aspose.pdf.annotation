@@ -1,10 +1,18 @@
 using Aspose.Pdf;
+using aspose.pdf.annotation.Model;
 using Aspose.Pdf.Annotations;
 
 namespace aspose.pdf.annotation;
 
 public class UnderlineAnnotator : IAnnotator
 {
+    private readonly UnderlineModel _model;
+
+    public UnderlineAnnotator(UnderlineModel model)
+    {
+        _model = model;
+    }
+    
     public void Add()
     {
         // Load the PDF file

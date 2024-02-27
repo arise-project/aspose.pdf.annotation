@@ -1,10 +1,18 @@
 using Aspose.Pdf;
+using aspose.pdf.annotation.Model;
 using Aspose.Pdf.Annotations;
 
 namespace aspose.pdf.annotation;
 
 public class PolygonAnnotator : IAnnotator
 {
+    private readonly PolygonModel _model;
+
+    public PolygonAnnotator(PolygonModel model)
+    {
+        _model = model;
+    }
+
     public void Add()
     {
         // Load the PDF file

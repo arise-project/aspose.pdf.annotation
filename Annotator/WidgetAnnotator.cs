@@ -1,4 +1,5 @@
 using Aspose.Pdf;
+using aspose.pdf.annotation.Model;
 using Aspose.Pdf.Annotations;
 using Aspose.Pdf.Forms;
 
@@ -6,6 +7,13 @@ namespace aspose.pdf.annotation;
 
 public class WidgetAnnotator : IAnnotator
 {
+    private readonly WidgetModel _model;
+
+    public WidgetAnnotator(WidgetModel model)
+    {
+        _model = model;
+    }
+    
     public void Add()
     {
         var document = new Document();

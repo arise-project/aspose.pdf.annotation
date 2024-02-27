@@ -1,10 +1,18 @@
 using Aspose.Pdf;
+using aspose.pdf.annotation.Model;
 using Aspose.Pdf.Annotations;
 
 namespace aspose.pdf.annotation;
 
 public class CircleAnnotator : IAnnotator
 {
+    private readonly CircleModel _model;
+
+    public CircleAnnotator(CircleModel model)
+    {
+        _model = model;
+    }
+
     public void Add()
     {
         var dataDir = "<path-to-file>";

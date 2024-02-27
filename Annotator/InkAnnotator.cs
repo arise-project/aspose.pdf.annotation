@@ -1,10 +1,18 @@
 using Aspose.Pdf;
+using aspose.pdf.annotation.Model;
 using Aspose.Pdf.Annotations;
 
 namespace aspose.pdf.annotation;
 
 public class InkAnnotator : IAnnotator
 {
+    private readonly InkModel _model;
+
+    public InkAnnotator(InkModel model)
+    {
+        _model = model;
+    }
+
     public void Add()
     {
         // Load the PDF file

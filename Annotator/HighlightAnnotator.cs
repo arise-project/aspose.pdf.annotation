@@ -1,10 +1,18 @@
 using Aspose.Pdf;
+using aspose.pdf.annotation.Model;
 using Aspose.Pdf.Annotations;
 
 namespace aspose.pdf.annotation;
 
 public class HighlightAnnotator : IAnnotator
 {
+    private readonly HighlightModel _model;
+
+    public HighlightAnnotator(HighlightModel model)
+    {
+        _model = model;
+    }
+
     public void Add()
     {
         // Load the PDF file

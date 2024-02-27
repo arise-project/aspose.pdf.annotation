@@ -1,10 +1,18 @@
 using Aspose.Pdf;
+using aspose.pdf.annotation.Model;
 using Aspose.Pdf.Annotations;
 
 namespace aspose.pdf.annotation;
 
 public class SoundAnnotator : IAnnotator
 {
+    private readonly SoundModel _model;
+
+    public SoundAnnotator(SoundModel model)
+    {
+        _model = model;
+    }
+
     public void Add()
     {
         // Load the PDF file

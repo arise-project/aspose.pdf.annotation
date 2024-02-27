@@ -1,10 +1,18 @@
 using Aspose.Pdf;
+using aspose.pdf.annotation.Model;
 using Aspose.Pdf.Annotations;
 
 namespace aspose.pdf.annotation;
 
 public class SquareAnnotator : IAnnotator
 {
+    private readonly SquareModel _model;
+
+    public SquareAnnotator(SquareModel model)
+    {
+        _model = model;
+    }
+
     public void Add()
     {
         var dataDir = "<path-to-file>";

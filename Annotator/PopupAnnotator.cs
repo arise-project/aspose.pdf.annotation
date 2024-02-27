@@ -1,10 +1,18 @@
 using Aspose.Pdf;
+using aspose.pdf.annotation.Model;
 using Aspose.Pdf.Annotations;
 
 namespace aspose.pdf.annotation;
 
 public class PopupAnnotator : IAnnotator
 {
+    private readonly PopupModel _model;
+
+    public PopupAnnotator(PopupModel model)
+    {
+        _model = model;
+    }
+
     public void Add()
     {
         // Load the PDF file

@@ -1,10 +1,18 @@
 using Aspose.Pdf;
+using aspose.pdf.annotation.Model;
 using Aspose.Pdf.Annotations;
 
 namespace aspose.pdf.annotation;
 
 public class TextAnnotator : IAnnotator
 {
+    private readonly TextModel _model;
+
+    public TextAnnotator(TextModel model)
+    {
+        _model = model;
+    }
+    
     public void Add()
     {
         // For complete examples and data files, please go to https://github.com/aspose-pdf/Aspose.PDF-for-.NET

@@ -1,4 +1,5 @@
 using Aspose.Pdf;
+using aspose.pdf.annotation.Model;
 using Aspose.Pdf.Annotations;
 using Aspose.Pdf.Text;
 
@@ -6,6 +7,13 @@ namespace aspose.pdf.annotation;
 
 public class LinkAnnotator : IAnnotator
 {
+    private readonly LinkModel _model;
+
+    public LinkAnnotator(LinkModel model)
+    {
+        _model = model;
+    }
+
     public void Add()
     {
         // Load the PDF file

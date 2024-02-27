@@ -1,4 +1,5 @@
 using Aspose.Pdf;
+using aspose.pdf.annotation.Model;
 using Aspose.Pdf.Facades;
 using Aspose.Pdf.Text;
 
@@ -6,6 +7,13 @@ namespace aspose.pdf.annotation;
 
 public class FreeTextAnnotator : IAnnotator
 {
+    private readonly FreeTextModel _model;
+
+    public FreeTextAnnotator(FreeTextModel model)
+    {
+        _model = model;
+    }
+
     public void Add()
     {
         var _document = new Document(@"C:\tmp\pdf-sample.pdf");

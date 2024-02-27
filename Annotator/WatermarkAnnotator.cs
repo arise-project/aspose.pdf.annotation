@@ -1,4 +1,5 @@
 using Aspose.Pdf;
+using aspose.pdf.annotation.Model;
 using Aspose.Pdf.Annotations;
 using Aspose.Pdf.Text;
 
@@ -6,6 +7,13 @@ namespace aspose.pdf.annotation;
 
 public class WatermarkAnnotator : IAnnotator
 {
+    private readonly WatermarkModel _model;
+
+    public WatermarkAnnotator(WatermarkModel model)
+    {
+        _model = model;
+    }
+    
     public void Add()
     {
         //Load a Document

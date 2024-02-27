@@ -1,10 +1,18 @@
 using Aspose.Pdf;
+using aspose.pdf.annotation.Model;
 using Aspose.Pdf.Annotations;
 
 namespace aspose.pdf.annotation;
 
 public class ScreenAnnotator : IAnnotator
 {
+    private readonly ScreenModel _model;
+
+    public ScreenAnnotator(ScreenModel model)
+    {
+        _model = model;
+    }
+
     public void Add()
     {
         // Load the PDF file

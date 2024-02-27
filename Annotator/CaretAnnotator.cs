@@ -1,10 +1,18 @@
 using Aspose.Pdf;
+using aspose.pdf.annotation.Model;
 using Aspose.Pdf.Annotations;
 
 namespace aspose.pdf.annotation;
 
 public class CaretAnnotator : IAnnotator
 {
+    private readonly CaretModel _model;
+
+    public CaretAnnotator(CaretModel model)
+    {
+        _model = model;
+    }
+    
     public void Add()
     {
         // Load the PDF file
