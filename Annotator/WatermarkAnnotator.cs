@@ -29,7 +29,6 @@ public class WatermarkAnnotator : IAnnotator
         ts.FontSize = 32;
 
         //Set opacity level of Annotaiton Text
-
         wa.Opacity = 0.5;
         //Add Text in Annotation
 

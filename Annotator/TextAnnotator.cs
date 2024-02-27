@@ -8,13 +8,13 @@ public class TextAnnotator : IAnnotator
     public void Add()
     {
         // For complete examples and data files, please go to https://github.com/aspose-pdf/Aspose.PDF-for-.NET
-// The path to the documents directory.
+        // The path to the documents directory.
         string dataDir = "./example";
 
-// Open document
+        // Open document
         Document pdfDocument = new Document(dataDir + "AddAnnotation.pdf");
 
-// Create annotation
+        // Create annotation
         TextAnnotation textAnnotation = new TextAnnotation(pdfDocument.Pages[1], new Aspose.Pdf.Rectangle(200, 400, 400, 600));
         textAnnotation.Title = "Sample Annotation Title";
         textAnnotation.Subject = "Sample Subject";
@@ -29,10 +29,10 @@ public class TextAnnotator : IAnnotator
         textAnnotation.Border = border;
         textAnnotation.Rect = new Aspose.Pdf.Rectangle(200, 400, 400, 600);
 
-// Add annotation in the annotations collection of the page
+        // Add annotation in the annotations collection of the page
         pdfDocument.Pages[1].Annotations.Add(textAnnotation);
         dataDir = dataDir + "AddAnnotation_out.pdf";
-// Save output file
+        // Save output file
         pdfDocument.Save(dataDir);
     }
 }
