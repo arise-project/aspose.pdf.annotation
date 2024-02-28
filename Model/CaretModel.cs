@@ -5,9 +5,9 @@ namespace aspose.pdf.annotation.Model;
 
 public class CaretModel
 {
-    public PagePositionModel Position { get; set; }
+    public PagePositionModel Position { get; set; } = new PagePositionModel();
 
-    public TitleModel Title { get; set; }
+    public TitleModel Title { get; set; } = new TitleModel();
 
-    public AnnotationFlags Flags { get; set; }
+    public AnnotationFlags Flags { get; set; } = AnnotationFlags.Default;
 }

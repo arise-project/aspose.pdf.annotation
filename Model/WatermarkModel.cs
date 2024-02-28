@@ -5,15 +5,15 @@ namespace aspose.pdf.annotation.Model;
 
 public class WatermarkModel
 {
-    public PagePositionModel Position { get; set; }
+    public PagePositionModel Position { get; set; } = new PagePositionModel();
 
-    public string[] Text { get; set; }
+    public string[] Text { get; set; } = new string[] { "test1", "test2" };
 
-    public double Opacity { get; set; }
+    public double Opacity { get; set; } = 0.5;
 
-    public Color ForegroundColor { get; set; }
-    
-    public string Font { get; set; }
+    public Color ForegroundColor { get; set; } = Color.Aqua;
 
-    public int FontSize { get; set; }
+    public string Font { get; set; } = "Arial";
+
+    public int FontSize { get; set; } = 20;
 }

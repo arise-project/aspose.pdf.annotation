@@ -5,17 +5,17 @@ namespace aspose.pdf.annotation.Model;
 
 public class RedactModel
 {
-    public PagePositionModel Position { get; set; }
+    public PagePositionModel Position { get; set; } = new PagePositionModel();
 
-    public Color FillColor { get;set; }
+    public Color FillColor { get; set; } = Color.Aqua;
     
-    public Color BorderColor { get;set; }
+    public Color BorderColor { get;set; } = Color.Black;
+
+    public Color Color { get; set; } = Color.Beige;
+
+    public string OverlayText { get; set; } = "CENSORED";
     
-    public Color Color { get;set; }
-    
-    public string OverlayText { get;set; }
-    
-    public HorizontalAlignment TextAlignment { get;set; }
-    
-    public bool Repeat { get;set; }
+    public HorizontalAlignment TextAlignment { get;set; } = HorizontalAlignment.Center;
+
+    public bool Repeat { get; set; } = true;
 }

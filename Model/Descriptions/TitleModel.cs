@@ -4,11 +4,11 @@ namespace aspose.pdf.annotation.Model.Descriptions;
 
 public class TitleModel
 {
-    public string Title { get; set; }
-    
-    public string  Subject { get; set; }
-    
-    public Color Color { get; set; }
-    
-    public double Opacity  { get; set; }
+    public string Title { get; set; } = "title";
+
+    public string Subject { get; set; } = "subject";
+
+    public Color Color { get; set; } = Color.Aqua;
+
+    public double Opacity { get; set; } = 0.5;
 }

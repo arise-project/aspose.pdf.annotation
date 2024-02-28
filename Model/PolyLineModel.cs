@@ -4,11 +4,11 @@ namespace aspose.pdf.annotation.Model;
 
 public class PolyLineModel
 {
-    public PagePositionModel Position { get; set; }
+    public PagePositionModel Position { get; set; } = new PagePositionModel();
     
-    public TitleModel Title { get; set; }
+    public TitleModel Title { get; set; } = new TitleModel();
+
+    public PagePositionModel Popup { get; set; } = new PagePositionModel();
     
-    public PagePositionModel Popup { get; set; }
-    
-    public PointModel[] Points { get; set; }
+    public PointModel[] Points { get; set; } = new PointModel[] { new PointModel { X = 10, Y = 10 }, new PointModel { X = 20, Y = 20 }, new PointModel { X = 30, Y = 20 } };
 }

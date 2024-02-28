@@ -4,15 +4,15 @@ namespace aspose.pdf.annotation.Model;
 
 public class FreeTextModel
 {
-    public PagePositionModel Page { get; set; }
-    
-    public string Text { get; set; }
+    public PageModel Page { get; set; } = new PageModel();
 
-    public int X { get; set; }
-    
-    public int Y { get; set; }
-    
-    public int Width { get; set; }
-    
-    public int Height { get; set; }
+    public string Text { get; set; } = "test";
+
+    public int X { get; set; } = 10;
+
+    public int Y { get; set; } = 10;
+
+    public int Width { get; set; } = 50;
+
+    public int Height { get; set; } = 50;
 }

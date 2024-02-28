@@ -4,9 +4,9 @@ namespace aspose.pdf.annotation.Model;
 
 public class SquigglyModel
 {
-    public PagePositionModel Page { get; set; }
+    public PageModel Page { get; set; } = new PageModel();
     
-    public TitleModel Title { get; set; }
+    public TitleModel Title { get; set; } = new TitleModel();
 
-    public string Text { get; set; }
+    public string Text { get; set; } = "test";
 }

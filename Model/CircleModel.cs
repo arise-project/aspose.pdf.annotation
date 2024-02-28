@@ -5,11 +5,11 @@ namespace aspose.pdf.annotation.Model;
 
 public class CircleModel
 {
-    public PagePositionModel Position { get; set; }
+    public PagePositionModel Position { get; set; } = new PagePositionModel();
     
-    public TitleModel Title { get; set; }
+    public TitleModel Title { get; set; } = new TitleModel();
 
-    public Color InteriorColor { get; set; }
-    
-    public PagePositionModel Popup { get; set; }
+    public Color InteriorColor { get; set; } = Color.Aqua;
+
+    public PagePositionModel Popup { get; set; } = new PagePositionModel();
 }
