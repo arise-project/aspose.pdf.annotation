@@ -7,20 +7,18 @@ namespace aspose.pdf.annotation;
 public class RedactAnnotator : IAnnotator
 {
     private readonly RedactModel _model;
+    private readonly string _workFolder;
 
-    public RedactAnnotator(RedactModel model)
+    public RedactAnnotator(RedactModel model, string workFolder)
     {
         _model = model;
+        _workFolder = workFolder;
     }
 
     public void Add()
     {
-        // For complete examples and data files, please go to https://github.com/aspose-pdf/Aspose.PDF-for-.NET
-        // The path to the documents directory.
-        string dataDir = "./examples";
-
         // Open document
-        Document doc = new Document(dataDir + "input.pdf");
+        Document doc = new Document(_workFolder + "input.pdf");
 
         // Create RedactionAnnotation instance for specific page region
         RedactionAnnotation annot = new RedactionAnnotation(doc.Pages[1], new Aspose.Pdf.Rectangle(200, 500, 300, 600));
@@ -37,7 +35,6 @@ public class RedactAnnotator : IAnnotator
         // Flattens annotation and redacts page contents (i.e. removes text and image
         // Under redacted annotation)
         annot.Redact();
-        dataDir = dataDir + "RedactPage_out.pdf";
-        doc.Save(dataDir);
+        doc.Save(_workFolder + "RedactPage_out.pdf");
     }
 }

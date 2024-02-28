@@ -7,16 +7,18 @@ namespace aspose.pdf.annotation;
 public class InkAnnotator : IAnnotator
 {
     private readonly InkModel _model;
+    private readonly string _workFolder;
 
-    public InkAnnotator(InkModel model)
+    public InkAnnotator(InkModel model, string workFolder)
     {
         _model = model;
+        _workFolder = workFolder;
     }
 
     public void Add()
     {
         // Load the PDF file
-        Document document = new Document(System.IO.Path.Combine("./examples", "appartments.pdf"));
+        Document document = new Document(System.IO.Path.Combine(_workFolder, "appartments.pdf"));
         Page page = document.Pages[1];
 
         Rectangle arect = new Rectangle(156.574, 521.316, 541.168, 575.703);
@@ -46,6 +48,6 @@ public class InkAnnotator : IAnnotator
         page.Annotations.Add(ia);
 
 // Save output file
-        document.Save(System.IO.Path.Combine("./examples", "appartments_mod.pdf"));
+        document.Save(System.IO.Path.Combine(_workFolder, "appartments_mod.pdf"));
     }
 }

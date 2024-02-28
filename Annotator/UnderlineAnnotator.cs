@@ -7,16 +7,18 @@ namespace aspose.pdf.annotation;
 public class UnderlineAnnotator : IAnnotator
 {
     private readonly UnderlineModel _model;
+    private readonly string _workFolder;
 
-    public UnderlineAnnotator(UnderlineModel model)
+    public UnderlineAnnotator(UnderlineModel model, string workFolder)
     {
         _model = model;
+        _workFolder = workFolder;
     }
     
     public void Add()
     {
         // Load the PDF file
-        Document document = new Document(System.IO.Path.Combine("./examples", "sample.pdf"));
+        Document document = new Document(System.IO.Path.Combine(_workFolder, "sample.pdf"));
         var tfa = new Aspose.Pdf.Text.TextFragmentAbsorber("PDF");
         tfa.Visit(document.Pages[1]);
 
@@ -29,6 +31,6 @@ public class UnderlineAnnotator : IAnnotator
         };
         // Add annotation to the page
         document.Pages[1].Annotations.Add(underlineAnnotation);
-        document.Save(System.IO.Path.Combine("./examples", "sample_mod.pdf"));
+        document.Save(System.IO.Path.Combine(_workFolder, "sample_mod.pdf"));
     }
 }

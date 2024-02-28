@@ -8,15 +8,17 @@ namespace aspose.pdf.annotation;
 public class WidgetAnnotator : IAnnotator
 {
     private readonly WidgetModel _model;
+    private readonly string _workFolder;
 
-    public WidgetAnnotator(WidgetModel model)
+    public WidgetAnnotator(WidgetModel model, string workFolder)
     {
         _model = model;
+        _workFolder = workFolder;
     }
     
     public void Add()
     {
-        var document = new Document();
+        var document = new Document(_workFolder + "text.pdf");
         var page = document.Pages.Add();
         var rect = new Rectangle(72, 748, 164, 768);
         var printButton = new ButtonField(page, rect)
@@ -37,5 +39,7 @@ public class WidgetAnnotator : IAnnotator
         printButton.Characteristics.Background =
             System.Drawing.Color.FromArgb(255, 0, 191, 255);
         document.Form.Add(printButton);
+        
+        document.Save(_workFolder + "Output.pdf");
     }
 }

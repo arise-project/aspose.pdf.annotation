@@ -7,16 +7,18 @@ namespace aspose.pdf.annotation;
 public class LineAnnotator : IAnnotator
 {
     private readonly LineModel _model;
+    private readonly string _workFolder;
 
-    public LineAnnotator(LineModel model)
+    public LineAnnotator(LineModel model, string workFolder)
     {
         _model = model;
+        _workFolder = workFolder;
     }
 
     public void Add()
     {
         // Load the PDF file
-        Document document = new Document(System.IO.Path.Combine("./examples", "Appartments.pdf"));
+        Document document = new Document(System.IO.Path.Combine(_workFolder, "Appartments.pdf"));
 
 // Create Line Annotation
         var lineAnnotation = new LineAnnotation(
@@ -34,6 +36,6 @@ public class LineAnnotator : IAnnotator
 
         // Add annotation to the page
         document.Pages[1].Annotations.Add(lineAnnotation);
-        document.Save(System.IO.Path.Combine("./examples", "Appartments_mod.pdf"));
+        document.Save(System.IO.Path.Combine(_workFolder, "Appartments_mod.pdf"));
     }
 }

@@ -8,16 +8,18 @@ namespace aspose.pdf.annotation;
 public class WatermarkAnnotator : IAnnotator
 {
     private readonly WatermarkModel _model;
+    private readonly string _workFolder;
 
-    public WatermarkAnnotator(WatermarkModel model)
+    public WatermarkAnnotator(WatermarkModel model, string workFolder)
     {
         _model = model;
+        _workFolder = workFolder;
     }
     
     public void Add()
     {
         //Load a Document
-        Document doc = new Document("source.pdf");
+        Document doc = new Document(_workFolder + "source.pdf");
 
         //Load Page object to add Annotation
         Page page = doc.Pages[1];
@@ -43,6 +45,6 @@ public class WatermarkAnnotator : IAnnotator
         wa.SetTextAndState(new string[] { "HELLO", "Line 1", "Line 2" }, ts);
 
         //Save the Document
-        doc.Save("Output.pdf");
+        doc.Save(_workFolder + "Output.pdf");
     }
 }

@@ -8,16 +8,18 @@ namespace aspose.pdf.annotation;
 public class LinkAnnotator : IAnnotator
 {
     private readonly LinkModel _model;
+    private readonly string _workFolder;
 
-    public LinkAnnotator(LinkModel model)
+    public LinkAnnotator(LinkModel model, string workFolder)
     {
         _model = model;
+        _workFolder = workFolder;
     }
 
     public void Add()
     {
         // Load the PDF file
-        Document document = new Document(System.IO.Path.Combine("./examples", "SimpleResume.pdf"));
+        Document document = new Document(System.IO.Path.Combine(_workFolder, "SimpleResume.pdf"));
         // Create TextFragmentAbsorber object to find a phone number
         TextFragmentAbsorber textFragmentAbsorber = new TextFragmentAbsorber("678-555-0103");
 
@@ -34,6 +36,6 @@ public class LinkAnnotator : IAnnotator
 
         // Add annotation to page
         document.Pages[1].Annotations.Add(linkAnnotation);
-        document.Save(System.IO.Path.Combine("./examples", "SimpleResume_mod.pdf"));
+        document.Save(System.IO.Path.Combine(_workFolder, "SimpleResume_mod.pdf"));
     }
 }

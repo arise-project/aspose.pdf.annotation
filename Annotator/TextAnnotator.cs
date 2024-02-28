@@ -7,20 +7,18 @@ namespace aspose.pdf.annotation;
 public class TextAnnotator : IAnnotator
 {
     private readonly TextModel _model;
+    private readonly string _workFolder;
 
-    public TextAnnotator(TextModel model)
+    public TextAnnotator(TextModel model, string workFolder)
     {
         _model = model;
+        _workFolder = workFolder;
     }
     
     public void Add()
     {
-        // For complete examples and data files, please go to https://github.com/aspose-pdf/Aspose.PDF-for-.NET
-        // The path to the documents directory.
-        string dataDir = "./example";
-
         // Open document
-        Document pdfDocument = new Document(dataDir + "AddAnnotation.pdf");
+        Document pdfDocument = new Document(_workFolder + "AddAnnotation.pdf");
 
         // Create annotation
         TextAnnotation textAnnotation = new TextAnnotation(pdfDocument.Pages[1], new Aspose.Pdf.Rectangle(200, 400, 400, 600));
@@ -39,8 +37,7 @@ public class TextAnnotator : IAnnotator
 
         // Add annotation in the annotations collection of the page
         pdfDocument.Pages[1].Annotations.Add(textAnnotation);
-        dataDir = dataDir + "AddAnnotation_out.pdf";
         // Save output file
-        pdfDocument.Save(dataDir);
+        pdfDocument.Save(_workFolder + "AddAnnotation_out.pdf");
     }
 }

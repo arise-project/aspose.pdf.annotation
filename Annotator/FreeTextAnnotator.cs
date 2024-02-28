@@ -8,15 +8,17 @@ namespace aspose.pdf.annotation;
 public class FreeTextAnnotator : IAnnotator
 {
     private readonly FreeTextModel _model;
+    private readonly string _workFolder;
 
-    public FreeTextAnnotator(FreeTextModel model)
+    public FreeTextAnnotator(FreeTextModel model, string workFolder)
     {
         _model = model;
+        _workFolder = workFolder;
     }
 
     public void Add()
     {
-        var _document = new Document(@"C:\tmp\pdf-sample.pdf");
+        var _document = new Document(_workFolder+ @"pdf-sample.pdf");
         var pdfContentEditor = new PdfContentEditor(_document);
         var tfs = new TextFragmentAbsorber();
         tfs.Visit(_document.Pages[1]);
@@ -30,6 +32,6 @@ public class FreeTextAnnotator : IAnnotator
         };
 
         pdfContentEditor.CreateFreeText(rect, "Free Text Demo", 1); // last param is a page number
-        pdfContentEditor.Save(@"C:\tmp\pdf-sample-0.pdf");
+        pdfContentEditor.Save(_workFolder + @"pdf-sample-0.pdf");
     }
 }

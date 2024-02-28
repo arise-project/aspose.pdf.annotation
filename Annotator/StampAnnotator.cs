@@ -6,23 +6,21 @@ namespace aspose.pdf.annotation;
 public class StampAnnotator : IAnnotator
 {
     private readonly StampModel _model;
+    private readonly string _workFolder;
 
-    public StampAnnotator(StampModel model)
+    public StampAnnotator(StampModel model, string workFolder)
     {
         _model = model;
+        _workFolder = workFolder;
     }
 
     public void Add()
     {
-        // For complete examples and data files, please go to https://github.com/aspose-pdf/Aspose.PDF-for-.NET
-        // The path to the documents directory.
-        string dataDir = "./examples";
-
         // Open document
-        Document pdfDocument = new Document(dataDir + "AddImageStamp.pdf");
+        Document pdfDocument = new Document(_workFolder + "AddImageStamp.pdf");
 
         // Create image stamp
-        ImageStamp imageStamp = new ImageStamp(dataDir + "aspose-logo.jpg");
+        ImageStamp imageStamp = new ImageStamp(_workFolder + "aspose-logo.jpg");
         imageStamp.Background = true;
         imageStamp.XIndent = 100;
         imageStamp.YIndent = 100;
@@ -33,8 +31,7 @@ public class StampAnnotator : IAnnotator
         // Add stamp to particular page
         pdfDocument.Pages[1].AddStamp(imageStamp);
 
-        dataDir = dataDir + "AddImageStamp_out.pdf";
         // Save output document
-        pdfDocument.Save(dataDir);
+        pdfDocument.Save(_workFolder + "AddImageStamp_out.pdf");
     }
 }

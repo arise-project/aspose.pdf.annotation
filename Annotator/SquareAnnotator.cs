@@ -7,10 +7,12 @@ namespace aspose.pdf.annotation;
 public class SquareAnnotator : IAnnotator
 {
     private readonly SquareModel _model;
+    private readonly string _workFolder;
 
-    public SquareAnnotator(SquareModel model)
+    public SquareAnnotator(SquareModel model, string workFolder)
     {
         _model = model;
+        _workFolder = workFolder;
     }
 
     public void Add()

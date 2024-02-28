@@ -7,16 +7,18 @@ namespace aspose.pdf.annotation;
 public class SoundAnnotator : IAnnotator
 {
     private readonly SoundModel _model;
+    private readonly string _workFolder;
 
-    public SoundAnnotator(SoundModel model)
+    public SoundAnnotator(SoundModel model, string workFolder)
     {
         _model = model;
+        _workFolder = workFolder;
     }
 
     public void Add()
     {
         // Load the PDF file
-        Document document = new Document(System.IO.Path.Combine("./examples", "sample.pdf"));
+        Document document = new Document(System.IO.Path.Combine(_workFolder, "sample.pdf"));
 
         var mediaFile = System.IO.Path.Combine("./examples", "input.swf");
         // Create Screen Annotation
@@ -26,6 +28,6 @@ public class SoundAnnotator : IAnnotator
             mediaFile);
         document.Pages[1].Annotations.Add(screenAnnotation);
 
-        document.Save(System.IO.Path.Combine("./examples", "sample_swf.pdf"));
+        document.Save(System.IO.Path.Combine(_workFolder, "sample_swf.pdf"));
     }
 }
