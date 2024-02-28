@@ -34,12 +34,14 @@ public class CircleAnnotator : IAnnotator
                 _model.Position.Ury,
                 _model.Position.NormalizeCoordinates))
         {
-            Title = "John Smith",
-            Subject = "Circle",
-            Color = Color.Red,
+            Title = _model.Title.Title,
+            Subject = _model.Title.Subject,
+            Color = _model.Title.Color,
             InteriorColor = Color.MistyRose,
             Opacity = 0.5,        
-            Popup = new PopupAnnotation(document.Pages[1], new Rectangle(842, 316, 1021, 459))
+            Popup = new PopupAnnotation(
+                document.Pages[_model.Position.PageNumber], 
+                new Rectangle(842, 316, 1021, 459))
         };
 
         // Add annotation to the page

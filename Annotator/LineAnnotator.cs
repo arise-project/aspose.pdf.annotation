@@ -33,18 +33,26 @@ public class LineAnnotator : IAnnotator
                 _model.Position.Urx,
                 _model.Position.Ury,
                 _model.Position.NormalizeCoordinates),
-            new Point(556, 99), new Point(556, 443))
+            new Point(556, 99), 
+            new Point(556, 443))
         {
-            Title = "John Smith",
-            Color = Color.Red,
+            Title = _model.Title.Title,
+            Subject = _model.Title.Subject,
+            Color = _model.Title.Color,
             Width = 3,
             StartingStyle = LineEnding.OpenArrow,
             EndingStyle = LineEnding.OpenArrow,
-            Popup = new PopupAnnotation(document.Pages[1], new Rectangle(842, 124, 1021, 266))
+            Popup = new PopupAnnotation(
+                document.Pages[_model.Position.PageNumber],
+                new Rectangle(842, 124, 1021, 266))
         };
 
         // Add annotation to the page
-        document.Pages[1].Annotations.Add(lineAnnotation);
+        document
+            .Pages[_model.Position.PageNumber]
+            .Annotations
+            .Add(lineAnnotation);
+        
         document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

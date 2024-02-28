@@ -1,4 +1,4 @@
-using Aspose.Pdf;
+using aspose.pdf.annotation.Model.Descriptions;
 using Aspose.Pdf.Annotations;
 
 namespace aspose.pdf.annotation.Model;
@@ -6,12 +6,8 @@ namespace aspose.pdf.annotation.Model;
 public class CaretModel
 {
     public PagePositionModel Position { get; set; }
-    
-    public string Title { get; set; }
-    
-    public string  Subject { get; set; }
-    
+
+    public TitleModel Title { get; set; }
+
     public AnnotationFlags Flags { get; set; }
-    
-    public Color Color { get; set; }
 }

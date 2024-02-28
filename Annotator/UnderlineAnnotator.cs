@@ -23,19 +23,26 @@ public class UnderlineAnnotator : IAnnotator
     {
         // Load the PDF file
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
-        var tfa = new Aspose.Pdf.Text.TextFragmentAbsorber("PDF");
-        tfa.Visit(document.Pages[_model.Page.PageNumber]);
+        
+        var textFragmentAbsorber = new Aspose.Pdf.Text.TextFragmentAbsorber("PDF");
+        textFragmentAbsorber.Visit(document.Pages[_model.Page.PageNumber]);
 
         //Create annotations
         UnderlineAnnotation underlineAnnotation = new UnderlineAnnotation(
             document.Pages[_model.Page.PageNumber],
-            tfa.TextFragments[4].Rectangle)
+            textFragmentAbsorber.TextFragments[4].Rectangle)
         {
-            Title = "Aspose User",
-            Color = Color.Violet
+            Title = _model.Title.Title,
+            Subject = _model.Title.Subject,
+            Color = _model.Title.Color
         };
+        
         // Add annotation to the page
-        document.Pages[1].Annotations.Add(underlineAnnotation);
+        document
+            .Pages[_model.Page.PageNumber]
+            .Annotations
+            .Add(underlineAnnotation);
+        
         document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

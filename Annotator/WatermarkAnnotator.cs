@@ -25,21 +25,15 @@ public class WatermarkAnnotator : IAnnotator
         //Load a Document
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
 
-        //Load Page object to add Annotation
-        Page page = document.Pages[_model.Position.PageNumber];
-
         //Create Annotation
-        WatermarkAnnotation wa = new WatermarkAnnotation(
-            page, 
+        WatermarkAnnotation annotation = new WatermarkAnnotation(
+            document.Pages[_model.Position.PageNumber], 
             new Rectangle(
                 _model.Position.Llx, 
                 _model.Position.Lly, 
                 _model.Position.Urx,
                 _model.Position.Ury,
                 _model.Position.NormalizeCoordinates));
-
-        //Add annotaiton into Annotation collection of Page
-        page.Annotations.Add(wa);
 
         //Create TextState for Font settings
         TextState ts = new TextState();
@@ -50,10 +44,16 @@ public class WatermarkAnnotator : IAnnotator
         ts.FontSize = 32;
 
         //Set opacity level of Annotaiton Text
-        wa.Opacity = 0.5;
+        annotation.Opacity = 0.5;
         //Add Text in Annotation
 
-        wa.SetTextAndState(new string[] { "HELLO", "Line 1", "Line 2" }, ts);
+        annotation.SetTextAndState(new string[] { "HELLO", "Line 1", "Line 2" }, ts);
+        
+        // Add annotation to the page
+        document
+            .Pages[_model.Position.PageNumber]
+            .Annotations
+            .Add(annotation);
 
         //Save the Document
         document.Save(Path.Combine(_workFolder, _outputFile));

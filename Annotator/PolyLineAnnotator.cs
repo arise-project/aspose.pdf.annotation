@@ -24,30 +24,6 @@ public class PolyLineAnnotator : IAnnotator
         // Load the PDF file
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
 
-        // Create Polygon Annotation
-        var polygonAnnotation = new PolygonAnnotation(
-            document.Pages[_model.Position.PageNumber], 
-            new Rectangle(
-                _model.Position.Llx, 
-                _model.Position.Lly, 
-                _model.Position.Urx,
-                _model.Position.Ury,
-                _model.Position.NormalizeCoordinates),
-            new Point[] {
-                new Point(274, 381),
-                new Point(555, 381),
-                new Point(555, 304),
-                new Point(570, 304),
-                new Point(570, 195),
-                new Point(274, 195)})
-        {
-            Title = "John Smith",
-            Color = Color.Blue,
-            InteriorColor = Color.BlueViolet,
-            Opacity = 0.25,
-            Popup = new PopupAnnotation(document.Pages[1], new Rectangle(842, 196, 1021, 338))
-        };
-
         // Create PoliLine Annotation
         var polylineAnnotation = new PolylineAnnotation(document.Pages[1],
             new Rectangle(270, 193, 571, 383),
@@ -59,14 +35,20 @@ public class PolyLineAnnotator : IAnnotator
                 new Point(626,111)
             })
         {
-            Title = "John Smith",
-            Color = Color.Red,
-            Popup = new PopupAnnotation(document.Pages[1], new Rectangle(842, 196, 1021, 338))
+            Title = _model.Title.Title,
+            Subject = _model.Title.Subject,
+            Color = _model.Title.Color,
+            Popup = new PopupAnnotation(
+                document.Pages[_model.Position.PageNumber], 
+                new Rectangle(842, 196, 1021, 338))
         };
 
         // Add annotation to the page
-        document.Pages[1].Annotations.Add(polygonAnnotation);
-        document.Pages[1].Annotations.Add(polylineAnnotation);
+        document
+            .Pages[_model.Position.PageNumber]
+            .Annotations
+            .Add(polylineAnnotation);
+            
         document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

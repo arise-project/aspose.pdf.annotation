@@ -30,12 +30,17 @@ public class SquigglyAnnotator : IAnnotator
             document.Pages[_model.Page.PageNumber],
             tfa.TextFragments[3].Rectangle)
         {
-            Title = "Aspose User",
-            Color = Color.Red
+            Title = _model.Title.Title,
+            Subject = _model.Title.Subject,
+            Color = _model.Title.Color
         };
         
         // Add annotation to the page
-        document.Pages[1].Annotations.Add(squigglyAnnotation);
+        document
+            .Pages[_model.Page.PageNumber]
+            .Annotations
+            .Add(squigglyAnnotation);
+        
         document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

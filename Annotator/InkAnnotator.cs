@@ -23,6 +23,7 @@ public class InkAnnotator : IAnnotator
     {
         // Load the PDF file
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
+        
         Page page = document.Pages[_model.Position.PageNumber];
 
         IList<Point[]> inkList = new List<Point[]>();
@@ -42,9 +43,9 @@ public class InkAnnotator : IAnnotator
                 _model.Position.Ury,
                 _model.Position.NormalizeCoordinates), inkList)
         {
-            Title = "John Smith",
-            Subject = "Pencil",
-            Color = Color.LightBlue,
+            Title = _model.Title.Title,
+            Subject = _model.Title.Subject,
+            Color = _model.Title.Color,
             CapStyle = CapStyle.Rounded,
             Opacity = 0.5
         };

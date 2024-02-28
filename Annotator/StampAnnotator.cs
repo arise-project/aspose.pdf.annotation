@@ -32,8 +32,11 @@ public class StampAnnotator : IAnnotator
         imageStamp.Width = 300;
         imageStamp.Rotate = Rotation.on270;
         imageStamp.Opacity = 0.5;
+        
         // Add stamp to particular page
-        pdfDocument.Pages[_model.Page.PageNumber].AddStamp(imageStamp);
+        pdfDocument
+            .Pages[_model.Page.PageNumber]
+            .AddStamp(imageStamp);
 
         // Save output document
         pdfDocument.Save(Path.Combine(_workFolder, _outputFile));

@@ -1,4 +1,4 @@
-namespace aspose.pdf.annotation.Model;
+namespace aspose.pdf.annotation.Model.Descriptions;
 
 public class PageModel
 {

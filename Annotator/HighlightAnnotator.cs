@@ -23,6 +23,7 @@ public class HighlightAnnotator : IAnnotator
     {
         // Load the PDF file
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
+        
         var tfa = new Aspose.Pdf.Text.TextFragmentAbsorber("PDF");
         tfa.Visit(document.Pages[1]);
 
@@ -31,12 +32,17 @@ public class HighlightAnnotator : IAnnotator
             document.Pages[_model.Page.PageNumber],
             tfa.TextFragments[1].Rectangle)
         {
-            Title = "Aspose User",
-            Color = Color.LightGreen
+            Title = _model.Title.Title,
+            Subject = _model.Title.Subject,
+            Color = _model.Title.Color
         };
         
         // Add annotation to the page
-        document.Pages[1].Annotations.Add(highlightAnnotation);
+        document
+            .Pages[_model.Page.PageNumber]
+            .Annotations
+            .Add(highlightAnnotation);
+        
         document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

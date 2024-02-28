@@ -24,7 +24,8 @@ public class SoundAnnotator : IAnnotator
         // Load the PDF file
         Document document = new Document(Path.Combine(_workFolder, "sample.pdf"));
 
-        var mediaFile = System.IO.Path.Combine("./examples", _inputFile);
+        var mediaFile = Path.Combine("./examples", _inputFile);
+        
         // Create Screen Annotation
         var screenAnnotation = new ScreenAnnotation(
             document.Pages[_model.Position.PageNumber], 
@@ -35,7 +36,11 @@ public class SoundAnnotator : IAnnotator
                 _model.Position.Ury,
                 _model.Position.NormalizeCoordinates),
             mediaFile);
-        document.Pages[1].Annotations.Add(screenAnnotation);
+        
+        document
+            .Pages[_model.Position.PageNumber]
+            .Annotations
+            .Add(screenAnnotation);
 
         document.Save(Path.Combine(_workFolder, _outputFile));
     }

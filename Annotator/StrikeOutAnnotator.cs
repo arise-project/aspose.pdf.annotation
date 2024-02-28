@@ -23,19 +23,25 @@ public class StrikeOutAnnotator : IAnnotator
     {
         // Load the PDF file
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
-        var tfa = new Aspose.Pdf.Text.TextFragmentAbsorber("PDF");
-        tfa.Visit(document.Pages[1]);
+        
+        var textFragmentAbsorber = new Aspose.Pdf.Text.TextFragmentAbsorber("PDF");
+        textFragmentAbsorber.Visit(document.Pages[1]);
 
         StrikeOutAnnotation strikeOutAnnotation = new StrikeOutAnnotation(
             document.Pages[_model.Page.PageNumber],
-            tfa.TextFragments[2].Rectangle)
+            textFragmentAbsorber.TextFragments[2].Rectangle)
         {
-            Title = "Aspose User",
-            Color = Color.Blue
+            Title = _model.Title.Title,
+            Subject = _model.Title.Subject,
+            Color = _model.Title.Color
         };
         
         // Add annotation to the page
-        document.Pages[1].Annotations.Add(strikeOutAnnotation);
+        document
+            .Pages[_model.Page.PageNumber]
+            .Annotations
+            .Add(strikeOutAnnotation);
+        
         document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

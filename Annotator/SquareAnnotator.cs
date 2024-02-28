@@ -21,9 +21,8 @@ public class SquareAnnotator : IAnnotator
 
     public void Add()
     {
-        var dataDir = "<path-to-file>";
         // Load the PDF file
-        Document document = new Document(Path.Combine(dataDir, _inputFile));
+        Document document = new Document(Path.Combine(_workFolder, _inputFile));
 
         // Create Square Annotation
         var squareAnnotation = new SquareAnnotation(
@@ -35,16 +34,22 @@ public class SquareAnnotator : IAnnotator
                 _model.Position.Ury,
                 _model.Position.NormalizeCoordinates))
         {
-            Title = "John Smith",
-            Subject = "Rectangle",
-            Color = Color.Blue,
+            Title = _model.Title.Title,
+            Subject = _model.Title.Subject,
+            Color = _model.Title.Color,
             InteriorColor = Color.BlueViolet,
             Opacity = 0.25,
-            Popup = new PopupAnnotation(document.Pages[1], new Rectangle(842, 196, 1021, 338))
+            Popup = new PopupAnnotation(
+                document.Pages[_model.Position.PageNumber], 
+                new Rectangle(842, 196, 1021, 338))
         };
 
         // Add annotation to the page
-        document.Pages[1].Annotations.Add(squareAnnotation);
-        document.Save(Path.Combine(dataDir, _outputFile));
+        document
+            .Pages[_model.Position.PageNumber]
+            .Annotations
+            .Add(squareAnnotation);
+        
+        document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

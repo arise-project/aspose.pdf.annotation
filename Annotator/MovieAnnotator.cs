@@ -25,6 +25,7 @@ public class MovieAnnotator : IAnnotator
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
 
         var mediaFile = System.IO.Path.Combine("./examples", "input.swf");
+        
         // Create Screen Annotation
         var screenAnnotation = new ScreenAnnotation(
             document.Pages[_model.Position.PageNumber], 
@@ -35,7 +36,11 @@ public class MovieAnnotator : IAnnotator
                 _model.Position.Ury,
                 _model.Position.NormalizeCoordinates),
             mediaFile);
-        document.Pages[1].Annotations.Add(screenAnnotation);
+        
+        document
+            .Pages[_model.Position.PageNumber]
+            .Annotations
+            .Add(screenAnnotation);
 
         document.Save(Path.Combine(_workFolder, _outputFile));
     }

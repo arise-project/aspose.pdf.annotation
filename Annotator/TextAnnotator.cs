@@ -32,22 +32,28 @@ public class TextAnnotator : IAnnotator
                 _model.Position.Lly, 
                 _model.Position.Urx,
                 _model.Position.Ury,
-                _model.Position.NormalizeCoordinates));
-        textAnnotation.Title = "Sample Annotation Title";
-        textAnnotation.Subject = "Sample Subject";
-        // ? textAnnotation.State = AnnotationState.Accepted;
-        textAnnotation.Contents = "Sample contents for the annotation";
-        textAnnotation.Open = true;
-        textAnnotation.Icon = TextIcon.Key;
+                _model.Position.NormalizeCoordinates))
+        {
+            Title = _model.Title.Title,
+            Subject = _model.Title.Subject,
+            Color = _model.Title.Color,
+            Contents = "Sample contents for the annotation",
+            Open = true,
+            Icon = TextIcon.Key
+        };
 
         Border border = new Border(textAnnotation);
         border.Width = 5;
         border.Dash = new Dash(1, 1);
         textAnnotation.Border = border;
-        textAnnotation.Rect = new Aspose.Pdf.Rectangle(200, 400, 400, 600);
+        textAnnotation.Rect = new Rectangle(200, 400, 400, 600);
 
         // Add annotation in the annotations collection of the page
-        document.Pages[1].Annotations.Add(textAnnotation);
+        document
+            .Pages[_model.Position.PageNumber]
+            .Annotations
+            .Add(textAnnotation);
+        
         // Save output file
         document.Save(Path.Combine(_workFolder, _outputFile));
     }

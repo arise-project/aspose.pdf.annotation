@@ -34,10 +34,10 @@ public class CaretAnnotator : IAnnotator
                 _model.Position.Ury,
                 _model.Position.NormalizeCoordinates))
         {
-            Title = _model.Title,
-            Subject = _model.Subject,
+            Title = _model.Title.Title,
+            Subject = _model.Title.Subject,
             Flags = _model.Flags,
-            Color = _model.Color
+            Color = _model.Title.Color
         };
 
         document

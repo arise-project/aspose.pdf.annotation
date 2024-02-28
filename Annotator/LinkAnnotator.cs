@@ -24,22 +24,31 @@ public class LinkAnnotator : IAnnotator
     {
         // Load the PDF file
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
+        
         // Create TextFragmentAbsorber object to find a phone number
         TextFragmentAbsorber textFragmentAbsorber = new TextFragmentAbsorber("678-555-0103");
 
         // Accept the absorber for the 1st page only
-        document.Pages[_model.Page.PageNumber].Accept(textFragmentAbsorber);
+        document
+            .Pages[_model.Page.PageNumber]
+            .Accept(textFragmentAbsorber);
 
         var phoneNumberFragment = textFragmentAbsorber.TextFragments[1];
 
         // Create Link Annotation and set the action to call a phone number
-        var linkAnnotation = new LinkAnnotation(document.Pages[1], phoneNumberFragment.Rectangle)
+        var linkAnnotation = new LinkAnnotation(
+            document.Pages[_model.Page.PageNumber], 
+            phoneNumberFragment.Rectangle)
         {
             Action = new GoToURIAction("callto:678-555-0103")
         };
 
         // Add annotation to page
-        document.Pages[1].Annotations.Add(linkAnnotation);
+        document
+            .Pages[_model.Page.PageNumber]
+            .Annotations
+            .Add(linkAnnotation);
+        
         document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }
