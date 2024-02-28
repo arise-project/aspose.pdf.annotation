@@ -9,4 +9,6 @@ public class PolyLineModel
     public TitleModel Title { get; set; }
     
     public PagePositionModel Popup { get; set; }
+    
+    public PointModel[] Points { get; set; }
 }

@@ -25,15 +25,18 @@ public class PolyLineAnnotator : IAnnotator
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
 
         // Create PoliLine Annotation
-        var polylineAnnotation = new PolylineAnnotation(document.Pages[1],
-            new Rectangle(270, 193, 571, 383),
-            new Point[] {
-                new Point(545,150),
-                new Point(545,190),
-                new Point(667,190),
-                new Point(667,110),
-                new Point(626,111)
-            })
+        var polylineAnnotation = new PolylineAnnotation(
+            document.Pages[_model.Position.PageNumber], 
+            new Rectangle(
+                _model.Position.Llx, 
+                _model.Position.Lly, 
+                _model.Position.Urx,
+                _model.Position.Ury,
+                _model.Position.NormalizeCoordinates),
+            _model
+                .Points
+                .Select(p => new Point(p.X, p.Y))
+                .ToArray())
         {
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,

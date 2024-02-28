@@ -33,13 +33,10 @@ public class PolygonAnnotator : IAnnotator
                 _model.Position.Urx,
                 _model.Position.Ury,
                 _model.Position.NormalizeCoordinates),
-            new Point[] {
-                new Point(274, 381),
-                new Point(555, 381),
-                new Point(555, 304),
-                new Point(570, 304),
-                new Point(570, 195),
-                new Point(274, 195)})
+            _model
+                .Points
+                .Select(p => new Point(p.X, p.Y))
+                .ToArray())
         {
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,
