@@ -26,18 +26,12 @@ public class FreeTextAnnotator : IAnnotator
         
         var pdfContentEditor = new PdfContentEditor(document);
         
-        var textFragmentAbsorber = new TextFragmentAbsorber();
-        textFragmentAbsorber.Visit(document.Pages[_model.Page.PageNumber]);
-        
-        if (textFragmentAbsorber.TextFragments.Count <= 0) 
-            return;
-        
         var rect = new System.Drawing.Rectangle
         {
-            X = (int)textFragmentAbsorber.TextFragments[1].Rectangle.LLX,
-            Y = (int)textFragmentAbsorber.TextFragments[1].Rectangle.URY + 5,
-            Height = 18,
-            Width = 100
+            X = _model.X,
+            Y = _model.Y,
+            Width = _model.Width,
+            Height = _model.Height
         };
 
         pdfContentEditor.CreateFreeText(

@@ -24,7 +24,7 @@ public class MovieAnnotator : IAnnotator
         // Load the PDF file
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
 
-        var mediaFile = System.IO.Path.Combine("./examples", "input.swf");
+        var mediaFile = System.IO.Path.Combine(_workFolder, _model.MediaFile);
         
         // Create Screen Annotation
         var screenAnnotation = new ScreenAnnotation(

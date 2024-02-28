@@ -40,9 +40,9 @@ public class LineAnnotator : IAnnotator
             Subject = _model.Title.Subject,
             Color = _model.Title.Color,
             Opacity = _model.Title.Opacity,
-            Width = 3,
-            StartingStyle = LineEnding.OpenArrow,
-            EndingStyle = LineEnding.OpenArrow,
+            Width = _model.Width,
+            StartingStyle = _model.StartingStyle,
+            EndingStyle = _model.EndingStyle,
             Popup = new PopupAnnotation(
                 document.Pages[_model.Popup.PageNumber], 
                 new Rectangle(

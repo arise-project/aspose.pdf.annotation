@@ -26,7 +26,7 @@ public class LinkAnnotator : IAnnotator
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
         
         // Create TextFragmentAbsorber object to find a phone number
-        TextFragmentAbsorber textFragmentAbsorber = new TextFragmentAbsorber("678-555-0103");
+        TextFragmentAbsorber textFragmentAbsorber = new TextFragmentAbsorber(_model.Text);
 
         // Accept the absorber for the 1st page only
         document
@@ -40,7 +40,7 @@ public class LinkAnnotator : IAnnotator
             document.Pages[_model.Page.PageNumber], 
             phoneNumberFragment.Rectangle)
         {
-            Action = new GoToURIAction("callto:678-555-0103")
+            Action = new GoToURIAction(_model.Url)
         };
 
         // Add annotation to page
