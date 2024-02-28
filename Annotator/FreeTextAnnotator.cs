@@ -25,7 +25,7 @@ public class FreeTextAnnotator : IAnnotator
         var _document = new Document(Path.Combine(_workFolder, _inputFile));
         var pdfContentEditor = new PdfContentEditor(_document);
         var tfs = new TextFragmentAbsorber();
-        tfs.Visit(_document.Pages[1]);
+        tfs.Visit(_document.Pages[_model.Page.PageNumber]);
         if (tfs.TextFragments.Count <= 0) return;
         var rect = new System.Drawing.Rectangle
         {

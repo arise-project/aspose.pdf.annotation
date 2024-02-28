@@ -28,7 +28,7 @@ public class HighlightAnnotator : IAnnotator
 
         //Create annotations
         HighlightAnnotation highlightAnnotation = new HighlightAnnotation(
-            document.Pages[1],
+            document.Pages[_model.Page.PageNumber],
             tfa.TextFragments[1].Rectangle)
         {
             Title = "Aspose User",

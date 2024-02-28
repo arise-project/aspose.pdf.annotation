@@ -27,7 +27,7 @@ public class SquigglyAnnotator : IAnnotator
         tfa.Visit(document.Pages[1]);
         
         SquigglyAnnotation squigglyAnnotation = new SquigglyAnnotation(
-            document.Pages[1],
+            document.Pages[_model.Page.PageNumber],
             tfa.TextFragments[3].Rectangle)
         {
             Title = "Aspose User",

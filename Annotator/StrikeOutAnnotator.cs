@@ -27,7 +27,7 @@ public class StrikeOutAnnotator : IAnnotator
         tfa.Visit(document.Pages[1]);
 
         StrikeOutAnnotation strikeOutAnnotation = new StrikeOutAnnotation(
-            document.Pages[1],
+            document.Pages[_model.Page.PageNumber],
             tfa.TextFragments[2].Rectangle)
         {
             Title = "Aspose User",

@@ -28,7 +28,7 @@ public class LinkAnnotator : IAnnotator
         TextFragmentAbsorber textFragmentAbsorber = new TextFragmentAbsorber("678-555-0103");
 
         // Accept the absorber for the 1st page only
-        document.Pages[1].Accept(textFragmentAbsorber);
+        document.Pages[_model.Page.PageNumber].Accept(textFragmentAbsorber);
 
         var phoneNumberFragment = textFragmentAbsorber.TextFragments[1];
 
