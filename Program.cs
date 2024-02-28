@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using aspose.pdf.annotation.Model;
+﻿using aspose.pdf.annotation.Model;
 
 namespace aspose.pdf.annotation;
 
@@ -12,44 +10,64 @@ internal class Program
         switch (model)
         {
             case CaretModel caretModel:
+                new CaretAnnotator(caretModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
             case CircleModel circleModel:
+                new CircleAnnotator(circleModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
             case FreeTextModel freeTextModel:
+                new FreeTextAnnotator(freeTextModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
-            case HighlightModel highlightModel: 
+            case HighlightModel highlightModel:
+                new HighlightAnnotator(highlightModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
-            case InkModel inkModel: 
+            case InkModel inkModel:
+                new InkAnnotator(inkModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
-            case LineModel lineModel: 
+            case LineModel lineModel:
+                new LineAnnotator(lineModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
             case LinkModel linkModel:
+                new LinkAnnotator(linkModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
-            case MovieModel movieModel: 
+            case MovieModel movieModel:
+                new MovieAnnotator(movieModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
-            case PolygonModel polygonModel: 
+            case PolygonModel polygonModel:
+                new PolygonAnnotator(polygonModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
-            case PolyLineModel polyLineModel: 
+            case PolyLineModel polyLineModel:
+                new PolyLineAnnotator(polyLineModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
-            case RedactModel redactModel: 
+            case RedactModel redactModel:
+                new RedactAnnotator(redactModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
-            case ScreenModel screenModel: 
+            case ScreenModel screenModel:
+                new ScreenAnnotator(screenModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
-            case SoundModel soundModel: 
+            case SoundModel soundModel:
+                new SoundAnnotator(soundModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
             case SquareModel squareModel:
+                new SquareAnnotator(squareModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
-            case SquigglyModel squigglyModel: 
+            case SquigglyModel squigglyModel:
+                new SquigglyAnnotator(squigglyModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
-            case StampModel stampModel: 
+            case StampModel stampModel:
+                new StampAnnotator(stampModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
-            case StrikeOutModel strikeOutModel: 
+            case StrikeOutModel strikeOutModel:
+                new StrikeOutAnnotator(strikeOutModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
-            case TextModel textModel: 
+            case TextModel textModel:
+                new TextAnnotator(textModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
             case UnderlineModel underlineModel:
+                new UnderlineAnnotator(underlineModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
             case WatermarkModel watermarkModel:
+                new WatermarkAnnotator(watermarkModel, "./examples", "text.pdf", "caret.pdf").Add();
                 break;
             default:
                 Console.WriteLine("unknown:"+ model.GetType());
