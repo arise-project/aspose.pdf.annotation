@@ -24,14 +24,16 @@ public class StampAnnotator : IAnnotator
         Document pdfDocument = new Document(Path.Combine(_workFolder, _inputFile));
 
         // Create image stamp
-        ImageStamp imageStamp = new ImageStamp(_workFolder + "aspose-logo.jpg");
-        imageStamp.Background = true;
-        imageStamp.XIndent = 100;
-        imageStamp.YIndent = 100;
-        imageStamp.Height = 300;
-        imageStamp.Width = 300;
-        imageStamp.Rotate = Rotation.on270;
-        imageStamp.Opacity = 0.5;
+        ImageStamp imageStamp = new ImageStamp(Path.Combine(_workFolder, _model.ImageFile))
+        {
+            Background = _model.Background,
+            XIndent = _model.XIndent,
+            YIndent = _model.YIndent,
+            Height = _model.Height,
+            Width = _model.Width,
+            Rotate = _model.Rotate,
+            Opacity = _model.Opacity
+        };
         
         // Add stamp to particular page
         pdfDocument

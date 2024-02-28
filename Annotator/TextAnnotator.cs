@@ -38,16 +38,14 @@ public class TextAnnotator : IAnnotator
             Subject = _model.Title.Subject,
             Color = _model.Title.Color,
             Opacity = _model.Title.Opacity,
-            Contents = "Sample contents for the annotation",
-            Open = true,
-            Icon = TextIcon.Key
+            Contents = _model.Contents,
+            Open = _model.Open,
+            Icon = _model.Icon
         };
 
         Border border = new Border(textAnnotation);
-        border.Width = 5;
-        border.Dash = new Dash(1, 1);
+        border.Width = _model.Border;
         textAnnotation.Border = border;
-        textAnnotation.Rect = new Rectangle(200, 400, 400, 600);
 
         // Add annotation in the annotations collection of the page
         document

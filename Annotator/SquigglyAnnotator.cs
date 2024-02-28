@@ -23,12 +23,13 @@ public class SquigglyAnnotator : IAnnotator
     {
         // Load the PDF file
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
-        var tfa = new Aspose.Pdf.Text.TextFragmentAbsorber("PDF");
-        tfa.Visit(document.Pages[1]);
+        
+        var textFragmentAbsorber = new Aspose.Pdf.Text.TextFragmentAbsorber(_model.Text);
+        textFragmentAbsorber.Visit(document.Pages[_model.Page.PageNumber]);
         
         SquigglyAnnotation squigglyAnnotation = new SquigglyAnnotation(
             document.Pages[_model.Page.PageNumber],
-            tfa.TextFragments[3].Rectangle)
+            textFragmentAbsorber.TextFragments[1].Rectangle)
         {
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,

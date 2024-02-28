@@ -22,9 +22,9 @@ public class ScreenAnnotator : IAnnotator
     public void Add()
     {
         // Load the PDF file
-        Document document = new Document(Path.Combine(_workFolder, "sample.pdf"));
+        Document document = new Document(Path.Combine(_workFolder, _inputFile));
 
-        var mediaFile = System.IO.Path.Combine("./examples", _inputFile);
+        var mediaFile = System.IO.Path.Combine(_workFolder, _model.MediaFile);
         
         // Create Screen Annotation
         var screenAnnotation = new ScreenAnnotation(

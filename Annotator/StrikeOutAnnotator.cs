@@ -24,12 +24,12 @@ public class StrikeOutAnnotator : IAnnotator
         // Load the PDF file
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
         
-        var textFragmentAbsorber = new Aspose.Pdf.Text.TextFragmentAbsorber("PDF");
-        textFragmentAbsorber.Visit(document.Pages[1]);
+        var textFragmentAbsorber = new Aspose.Pdf.Text.TextFragmentAbsorber(_model.Text);
+        textFragmentAbsorber.Visit(document.Pages[_model.Page.PageNumber]);
 
         StrikeOutAnnotation strikeOutAnnotation = new StrikeOutAnnotation(
             document.Pages[_model.Page.PageNumber],
-            textFragmentAbsorber.TextFragments[2].Rectangle)
+            textFragmentAbsorber.TextFragments[1].Rectangle)
         {
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,

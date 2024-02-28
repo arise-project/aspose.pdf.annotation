@@ -26,14 +26,6 @@ public class InkAnnotator : IAnnotator
         
         Page page = document.Pages[_model.Position.PageNumber];
 
-        IList<Point[]> inkList = new List<Point[]>();
-        
-        inkList.Add(
-            _model
-            .Points
-            .Select(p => new Point(p.X, p.Y))
-            .ToArray());
-
         InkAnnotation annotation = new InkAnnotation(
             page, 
             new Rectangle(
@@ -41,13 +33,17 @@ public class InkAnnotator : IAnnotator
                 _model.Position.Lly, 
                 _model.Position.Urx,
                 _model.Position.Ury,
-                _model.Position.NormalizeCoordinates), inkList)
+                _model.Position.NormalizeCoordinates),
+            _model
+                .Points
+                .Select(p => new Point(p.X, p.Y))
+                .ToList())
         {
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,
             Color = _model.Title.Color,
             Opacity = _model.Title.Opacity,
-            CapStyle = CapStyle.Rounded,
+            CapStyle = _model.CapStyle,
         };
         
         annotation.Border = new Border(annotation)

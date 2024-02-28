@@ -27,27 +27,27 @@ public class WatermarkAnnotator : IAnnotator
 
         //Create Annotation
         WatermarkAnnotation annotation = new WatermarkAnnotation(
-            document.Pages[_model.Position.PageNumber], 
+            document.Pages[_model.Position.PageNumber],
             new Rectangle(
-                _model.Position.Llx, 
-                _model.Position.Lly, 
+                _model.Position.Llx,
+                _model.Position.Lly,
                 _model.Position.Urx,
                 _model.Position.Ury,
-                _model.Position.NormalizeCoordinates));
+                _model.Position.NormalizeCoordinates))
+        {
+            Opacity = _model.Opacity
+        };
 
         //Create TextState for Font settings
-        TextState ts = new TextState();
-
-        ts.ForegroundColor = Color.Blue;
-        ts.Font = FontRepository.FindFont("Times New Roman");
-
-        ts.FontSize = 32;
-
-        //Set opacity level of Annotaiton Text
-        annotation.Opacity = 0.5;
+        TextState ts = new TextState
+        {
+            ForegroundColor = _model.ForegroundColor,
+            Font = FontRepository.FindFont(_model.Font),
+            FontSize = _model.FontSize
+        };
+        
         //Add Text in Annotation
-
-        annotation.SetTextAndState(new string[] { "HELLO", "Line 1", "Line 2" }, ts);
+        annotation.SetTextAndState(_model.Text, ts);
         
         // Add annotation to the page
         document

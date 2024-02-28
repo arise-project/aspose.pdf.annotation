@@ -26,22 +26,23 @@ public class RedactAnnotator : IAnnotator
 
         // Create RedactionAnnotation instance for specific page region
         RedactionAnnotation annotation = new RedactionAnnotation(
-            document.Pages[_model.Position.PageNumber], 
+            document.Pages[_model.Position.PageNumber],
             new Rectangle(
-                _model.Position.Llx, 
-                _model.Position.Lly, 
+                _model.Position.Llx,
+                _model.Position.Lly,
                 _model.Position.Urx,
                 _model.Position.Ury,
-                _model.Position.NormalizeCoordinates));
-        
-        annotation.FillColor = Aspose.Pdf.Color.Green;
-        annotation.BorderColor = Aspose.Pdf.Color.Yellow;
-        annotation.Color = Aspose.Pdf.Color.Blue;
-        // Text to be printed on redact annotation
-        annotation.OverlayText = "REDACTED";
-        annotation.TextAlignment = Aspose.Pdf.HorizontalAlignment.Center;
-        // Repat Overlay text over redact Annotation
-        annotation.Repeat = true;
+                _model.Position.NormalizeCoordinates))
+        {
+            FillColor = _model.FillColor,
+            BorderColor = _model.BorderColor,
+            Color = _model.Color,
+            // Text to be printed on redact annotation
+            OverlayText = _model.OverlayText,
+            TextAlignment = _model.TextAlignment,
+            // Repat Overlay text over redact Annotation
+            Repeat = _model.Repeat
+        };
         
         // Add annotation to annotations collection of first page
         document
