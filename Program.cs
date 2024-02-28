@@ -6,6 +6,9 @@ internal class Program
 {
     public static void Main(string[] args)
     {
+        new Tests().Run();
+        return;
+
         object model  = new ReadLineCli().CreateModel();
         switch (model)
         {
