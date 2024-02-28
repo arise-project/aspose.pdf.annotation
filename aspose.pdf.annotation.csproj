@@ -13,8 +13,23 @@
 
 
     <ItemGroup>
-      <Folder Include="example\" />
       <Folder Include="examples\" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <None Update="examples\test.avi">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="examples\test.bmp">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="examples\test.pdf">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="examples\test.wav">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>
