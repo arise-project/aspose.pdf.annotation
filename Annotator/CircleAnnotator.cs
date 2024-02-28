@@ -40,8 +40,13 @@ public class CircleAnnotator : IAnnotator
             InteriorColor = _model.InteriorColor,
             Opacity = _model.Title.Opacity,        
             Popup = new PopupAnnotation(
-                document.Pages[_model.Position.PageNumber], 
-                new Rectangle(842, 316, 1021, 459))
+                document.Pages[_model.Popup.PageNumber], 
+                new Rectangle(
+                    _model.Popup.Llx, 
+                    _model.Popup.Lly, 
+                    _model.Popup.Urx,
+                    _model.Popup.Ury,
+                    _model.Popup.NormalizeCoordinates))
         };
 
         // Add annotation to the page

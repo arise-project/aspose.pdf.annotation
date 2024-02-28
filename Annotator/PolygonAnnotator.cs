@@ -47,8 +47,13 @@ public class PolygonAnnotator : IAnnotator
             Opacity = _model.Title.Opacity,
             InteriorColor = Color.BlueViolet,
             Popup = new PopupAnnotation(
-                document.Pages[_model.Position.PageNumber], 
-                new Rectangle(842, 196, 1021, 338))
+                document.Pages[_model.Popup.PageNumber], 
+                new Rectangle(
+                    _model.Popup.Llx, 
+                    _model.Popup.Lly, 
+                    _model.Popup.Urx,
+                    _model.Popup.Ury,
+                    _model.Popup.NormalizeCoordinates))
         };
 
         // Add annotation to the page

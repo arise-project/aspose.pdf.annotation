@@ -10,4 +10,6 @@ public class CircleModel
     public TitleModel Title { get; set; }
 
     public Color InteriorColor { get; set; }
+    
+    public PagePositionModel Popup { get; set; }
 }

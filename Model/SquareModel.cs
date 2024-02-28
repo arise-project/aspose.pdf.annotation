@@ -7,4 +7,6 @@ public class SquareModel
     public PagePositionModel Position { get; set; }
     
     public TitleModel Title { get; set; }
+    
+    public PagePositionModel Popup { get; set; }
 }
