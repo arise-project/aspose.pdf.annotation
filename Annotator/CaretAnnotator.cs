@@ -11,7 +11,11 @@ public class CaretAnnotator : IAnnotator
     private readonly string _inputFile;
     private readonly string _outputFile;
 
-    public CaretAnnotator(CaretModel model, string workFolder, string inputFile, string outputFile)
+    public CaretAnnotator(
+        CaretModel model, 
+        string workFolder, 
+        string inputFile, 
+        string outputFile)
     {
         _model = model;
         _workFolder = workFolder;
@@ -37,7 +41,8 @@ public class CaretAnnotator : IAnnotator
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,
             Flags = _model.Flags,
-            Color = _model.Title.Color
+            Color = _model.Title.Color,
+            Opacity = _model.Title.Opacity
         };
 
         document

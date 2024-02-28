@@ -38,6 +38,7 @@ public class PolyLineAnnotator : IAnnotator
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,
             Color = _model.Title.Color,
+            Opacity = _model.Title.Opacity,
             Popup = new PopupAnnotation(
                 document.Pages[_model.Position.PageNumber], 
                 new Rectangle(842, 196, 1021, 338))

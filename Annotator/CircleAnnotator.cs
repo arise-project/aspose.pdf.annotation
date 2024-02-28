@@ -37,8 +37,8 @@ public class CircleAnnotator : IAnnotator
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,
             Color = _model.Title.Color,
-            InteriorColor = Color.MistyRose,
-            Opacity = 0.5,        
+            InteriorColor = _model.InteriorColor,
+            Opacity = _model.Title.Opacity,        
             Popup = new PopupAnnotation(
                 document.Pages[_model.Position.PageNumber], 
                 new Rectangle(842, 316, 1021, 459))

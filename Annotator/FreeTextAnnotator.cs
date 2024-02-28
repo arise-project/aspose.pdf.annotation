@@ -22,25 +22,27 @@ public class FreeTextAnnotator : IAnnotator
 
     public void Add()
     {
-        var _document = new Document(Path.Combine(_workFolder, _inputFile));
+        var document = new Document(Path.Combine(_workFolder, _inputFile));
         
-        var pdfContentEditor = new PdfContentEditor(_document);
-        var tfs = new TextFragmentAbsorber();
-        tfs.Visit(_document.Pages[_model.Page.PageNumber]);
+        var pdfContentEditor = new PdfContentEditor(document);
         
-        if (tfs.TextFragments.Count <= 0) return;
+        var textFragmentAbsorber = new TextFragmentAbsorber();
+        textFragmentAbsorber.Visit(document.Pages[_model.Page.PageNumber]);
+        
+        if (textFragmentAbsorber.TextFragments.Count <= 0) 
+            return;
         
         var rect = new System.Drawing.Rectangle
         {
-            X = (int)tfs.TextFragments[1].Rectangle.LLX,
-            Y = (int)tfs.TextFragments[1].Rectangle.URY + 5,
+            X = (int)textFragmentAbsorber.TextFragments[1].Rectangle.LLX,
+            Y = (int)textFragmentAbsorber.TextFragments[1].Rectangle.URY + 5,
             Height = 18,
             Width = 100
         };
 
         pdfContentEditor.CreateFreeText(
             rect, 
-            "Free Text Demo",
+            _model.Text,
             _model.Page.PageNumber); // last param is a page number
         
         pdfContentEditor.Save(Path.Combine(_workFolder, _outputFile));

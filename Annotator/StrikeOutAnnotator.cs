@@ -33,7 +33,8 @@ public class StrikeOutAnnotator : IAnnotator
         {
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,
-            Color = _model.Title.Color
+            Color = _model.Title.Color,
+            Opacity = _model.Title.Opacity
         };
         
         // Add annotation to the page

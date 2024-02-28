@@ -46,8 +46,8 @@ public class InkAnnotator : IAnnotator
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,
             Color = _model.Title.Color,
-            CapStyle = CapStyle.Rounded,
-            Opacity = 0.5
+            Opacity = _model.Title.Opacity,
+            CapStyle = CapStyle.Rounded
         };
         Border border = new Border(ia)
         {

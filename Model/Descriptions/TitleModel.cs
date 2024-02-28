@@ -9,4 +9,6 @@ public class TitleModel
     public string  Subject { get; set; }
     
     public Color Color { get; set; }
+    
+    public double Opacity  { get; set; }
 }

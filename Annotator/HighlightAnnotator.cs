@@ -24,17 +24,19 @@ public class HighlightAnnotator : IAnnotator
         // Load the PDF file
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
         
-        var tfa = new Aspose.Pdf.Text.TextFragmentAbsorber("PDF");
-        tfa.Visit(document.Pages[1]);
+        var textFragmentAbsorber = new Aspose.Pdf.Text.TextFragmentAbsorber(_model.Text);
+        
+        textFragmentAbsorber.Visit(document.Pages[_model.Page.PageNumber]);
 
         //Create annotations
         HighlightAnnotation highlightAnnotation = new HighlightAnnotation(
             document.Pages[_model.Page.PageNumber],
-            tfa.TextFragments[1].Rectangle)
+            textFragmentAbsorber.TextFragments[1].Rectangle)
         {
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,
-            Color = _model.Title.Color
+            Color = _model.Title.Color,
+            Opacity = _model.Title.Opacity
         };
         
         // Add annotation to the page

@@ -37,6 +37,7 @@ public class TextAnnotator : IAnnotator
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,
             Color = _model.Title.Color,
+            Opacity = _model.Title.Opacity,
             Contents = "Sample contents for the annotation",
             Open = true,
             Icon = TextIcon.Key

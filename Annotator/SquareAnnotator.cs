@@ -37,8 +37,8 @@ public class SquareAnnotator : IAnnotator
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,
             Color = _model.Title.Color,
+            Opacity = _model.Title.Opacity,
             InteriorColor = Color.BlueViolet,
-            Opacity = 0.25,
             Popup = new PopupAnnotation(
                 document.Pages[_model.Position.PageNumber], 
                 new Rectangle(842, 196, 1021, 338))

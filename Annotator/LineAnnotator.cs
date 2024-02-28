@@ -39,6 +39,7 @@ public class LineAnnotator : IAnnotator
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,
             Color = _model.Title.Color,
+            Opacity = _model.Title.Opacity,
             Width = 3,
             StartingStyle = LineEnding.OpenArrow,
             EndingStyle = LineEnding.OpenArrow,
