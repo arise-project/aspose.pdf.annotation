@@ -19,7 +19,7 @@ public class TextAnnotator : IAnnotator
         _outputFile = outputFile;
     }
     
-    public void Add()
+    public void Save()
     {
         // Open document
         Document document = new Document(Path.Combine(_workFolder, _inputFile));

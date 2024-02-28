@@ -23,7 +23,7 @@ public class CaretAnnotator : IAnnotator
         _outputFile = outputFile;
     }
     
-    public void Add()
+    public void Save()
     {
         // Load the PDF file
         Document document = new Document(Path.Combine(_workFolder, _inputFile));

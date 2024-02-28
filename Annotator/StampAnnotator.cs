@@ -18,7 +18,7 @@ public class StampAnnotator : IAnnotator
         _outputFile = outputFile;
     }
 
-    public void Add()
+    public void Save()
     {
         // Open document
         Document pdfDocument = new Document(Path.Combine(_workFolder, _inputFile));
