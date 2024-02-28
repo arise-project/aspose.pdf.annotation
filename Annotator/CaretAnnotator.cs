@@ -23,8 +23,9 @@ public class CaretAnnotator : IAnnotator
     {
         // Load the PDF file
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
+        
         // This annotation is used to indicate the insertion of text
-        var caretAnnotation1 = new CaretAnnotation(
+        var caretAnnotation = new CaretAnnotation(
             document.Pages[_model.Position.PageNumber], 
             new Rectangle(
                 _model.Position.Llx, 
@@ -33,14 +34,17 @@ public class CaretAnnotator : IAnnotator
                 _model.Position.Ury,
                 _model.Position.NormalizeCoordinates))
         {
-            Title = "Aspose User",
-            Subject = "Inserted text 1",
-            Flags = AnnotationFlags.Print,
-            Color = Color.Blue
+            Title = _model.Title,
+            Subject = _model.Subject,
+            Flags = _model.Flags,
+            Color = _model.Color
         };
 
-        document.Pages[1].Annotations.Add(caretAnnotation1);
-
+        document
+            .Pages[_model.Position.PageNumber]
+            .Annotations
+            .Add(caretAnnotation);
+        
         document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }
