@@ -22,10 +22,16 @@ public class TextAnnotator : IAnnotator
     public void Add()
     {
         // Open document
-        Document pdfDocument = new Document(Path.Combine(_workFolder, _inputFile));
+        Document document = new Document(Path.Combine(_workFolder, _inputFile));
 
         // Create annotation
-        TextAnnotation textAnnotation = new TextAnnotation(pdfDocument.Pages[1], new Aspose.Pdf.Rectangle(200, 400, 400, 600));
+        TextAnnotation textAnnotation = new TextAnnotation(
+            document.Pages[_model.Position.PageNumber], 
+            new Rectangle(
+                _model.Position.Llx, 
+                _model.Position.Lly, 
+                _model.Position.Urx,
+                _model.Position.Ury));
         textAnnotation.Title = "Sample Annotation Title";
         textAnnotation.Subject = "Sample Subject";
         // ? textAnnotation.State = AnnotationState.Accepted;
@@ -40,8 +46,8 @@ public class TextAnnotator : IAnnotator
         textAnnotation.Rect = new Aspose.Pdf.Rectangle(200, 400, 400, 600);
 
         // Add annotation in the annotations collection of the page
-        pdfDocument.Pages[1].Annotations.Add(textAnnotation);
+        document.Pages[1].Annotations.Add(textAnnotation);
         // Save output file
-        pdfDocument.Save(Path.Combine(_workFolder, _outputFile));
+        document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

@@ -27,7 +27,8 @@ public class UnderlineAnnotator : IAnnotator
         tfa.Visit(document.Pages[1]);
 
         //Create annotations
-        UnderlineAnnotation underlineAnnotation = new UnderlineAnnotation(document.Pages[1],
+        UnderlineAnnotation underlineAnnotation = new UnderlineAnnotation(
+            document.Pages[1],
             tfa.TextFragments[4].Rectangle)
         {
             Title = "Aspose User",

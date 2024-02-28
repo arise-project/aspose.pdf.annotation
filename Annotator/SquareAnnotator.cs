@@ -26,7 +26,13 @@ public class SquareAnnotator : IAnnotator
         Document document = new Document(Path.Combine(dataDir, _inputFile));
 
         // Create Square Annotation
-        var squareAnnotation = new SquareAnnotation(document.Pages[1], new Rectangle(67, 317, 261, 459))
+        var squareAnnotation = new SquareAnnotation(
+            document.Pages[_model.Position.PageNumber], 
+            new Rectangle(
+                _model.Position.Llx, 
+                _model.Position.Lly, 
+                _model.Position.Urx,
+                _model.Position.Ury))
         {
             Title = "John Smith",
             Subject = "Rectangle",

@@ -26,8 +26,12 @@ public class PopupAnnotator : IAnnotator
 
         // Create Line Annotation
         var lineAnnotation = new LineAnnotation(
-            document.Pages[1],
-            new Rectangle(550, 93, 562, 439),
+            document.Pages[_model.Position.PageNumber], 
+            new Rectangle(
+                _model.Position.Llx, 
+                _model.Position.Lly, 
+                _model.Position.Urx,
+                _model.Position.Ury),
             new Point(556, 99), new Point(556, 443))
         {
             Title = "John Smith",

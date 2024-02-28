@@ -23,20 +23,23 @@ public class InkAnnotator : IAnnotator
     {
         // Load the PDF file
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
-        Page page = document.Pages[1];
-
-        Rectangle arect = new Rectangle(156.574, 521.316, 541.168, 575.703);
+        Page page = document.Pages[_model.Position.PageNumber];
 
         IList<Point[]> inkList = new List<Point[]>();
-        Point[] arrpt = new[]
-        {
+        Point[] arrpt = {
             new Point(209.727,542.263),
             new Point(209.727,541.94),
             new Point(209.727,541.616)
         };
         inkList.Add(arrpt);
 
-        InkAnnotation ia = new InkAnnotation(page, arect, inkList)
+        InkAnnotation ia = new InkAnnotation(
+            page, 
+            new Rectangle(
+                _model.Position.Llx, 
+                _model.Position.Lly, 
+                _model.Position.Urx,
+                _model.Position.Ury), inkList)
         {
             Title = "John Smith",
             Subject = "Pencil",

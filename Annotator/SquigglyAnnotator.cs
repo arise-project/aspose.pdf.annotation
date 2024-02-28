@@ -26,7 +26,8 @@ public class SquigglyAnnotator : IAnnotator
         var tfa = new Aspose.Pdf.Text.TextFragmentAbsorber("PDF");
         tfa.Visit(document.Pages[1]);
         
-        SquigglyAnnotation squigglyAnnotation = new SquigglyAnnotation(document.Pages[1],
+        SquigglyAnnotation squigglyAnnotation = new SquigglyAnnotation(
+            document.Pages[1],
             tfa.TextFragments[3].Rectangle)
         {
             Title = "Aspose User",

@@ -22,10 +22,16 @@ public class RedactAnnotator : IAnnotator
     public void Add()
     {
         // Open document
-        Document doc = new Document(Path.Combine(_workFolder, _inputFile));
+        Document document = new Document(Path.Combine(_workFolder, _inputFile));
 
         // Create RedactionAnnotation instance for specific page region
-        RedactionAnnotation annot = new RedactionAnnotation(doc.Pages[1], new Aspose.Pdf.Rectangle(200, 500, 300, 600));
+        RedactionAnnotation annot = new RedactionAnnotation(
+            document.Pages[_model.Position.PageNumber], 
+            new Rectangle(
+                _model.Position.Llx, 
+                _model.Position.Lly, 
+                _model.Position.Urx,
+                _model.Position.Ury));
         annot.FillColor = Aspose.Pdf.Color.Green;
         annot.BorderColor = Aspose.Pdf.Color.Yellow;
         annot.Color = Aspose.Pdf.Color.Blue;
@@ -35,10 +41,10 @@ public class RedactAnnotator : IAnnotator
         // Repat Overlay text over redact Annotation
         annot.Repeat = true;
         // Add annotation to annotations collection of first page
-        doc.Pages[1].Annotations.Add(annot);
+        document.Pages[1].Annotations.Add(annot);
         // Flattens annotation and redacts page contents (i.e. removes text and image
         // Under redacted annotation)
         annot.Redact();
-        doc.Save(Path.Combine(_workFolder, _outputFile));
+        document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

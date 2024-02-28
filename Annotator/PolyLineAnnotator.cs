@@ -25,8 +25,13 @@ public class PolyLineAnnotator : IAnnotator
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
 
         // Create Polygon Annotation
-        var polygonAnnotation = new PolygonAnnotation(document.Pages[1],
-            new Rectangle(270, 193, 571, 383),
+        var polygonAnnotation = new PolygonAnnotation(
+            document.Pages[_model.Position.PageNumber], 
+            new Rectangle(
+                _model.Position.Llx, 
+                _model.Position.Lly, 
+                _model.Position.Urx,
+                _model.Position.Ury),
             new Point[] {
                 new Point(274, 381),
                 new Point(555, 381),

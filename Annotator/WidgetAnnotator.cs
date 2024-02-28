@@ -23,9 +23,13 @@ public class WidgetAnnotator : IAnnotator
     public void Add()
     {
         var document = new Document(Path.Combine(_workFolder, _inputFile));
-        var page = document.Pages.Add();
-        var rect = new Rectangle(72, 748, 164, 768);
-        var printButton = new ButtonField(page, rect)
+        var printButton = new ButtonField(
+            document.Pages[_model.Position.PageNumber], 
+            new Rectangle(
+                _model.Position.Llx, 
+                _model.Position.Lly, 
+                _model.Position.Urx,
+                _model.Position.Ury))
         {
             AlternateName = "Print current document",
             Color = Color.Black,

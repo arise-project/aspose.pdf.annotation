@@ -25,7 +25,13 @@ public class CircleAnnotator : IAnnotator
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
 
         // Create Cirlce Annotation
-        var circleAnnotation = new CircleAnnotation(document.Pages[1], new Rectangle(270, 160, 483, 383))
+        var circleAnnotation = new CircleAnnotation(
+            document.Pages[_model.Position.PageNumber], 
+            new Rectangle(
+                _model.Position.Llx, 
+                _model.Position.Lly, 
+                _model.Position.Urx,
+                _model.Position.Ury))
         {
             Title = "John Smith",
             Subject = "Circle",

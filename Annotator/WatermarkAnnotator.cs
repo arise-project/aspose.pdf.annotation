@@ -23,13 +23,19 @@ public class WatermarkAnnotator : IAnnotator
     public void Add()
     {
         //Load a Document
-        Document doc = new Document(Path.Combine(_workFolder, _inputFile));
+        Document document = new Document(Path.Combine(_workFolder, _inputFile));
 
         //Load Page object to add Annotation
-        Page page = doc.Pages[1];
+        Page page = document.Pages[_model.Position.PageNumber];
 
         //Create Annotation
-        WatermarkAnnotation wa = new WatermarkAnnotation(page, new Rectangle(100, 500, 400, 600));
+        WatermarkAnnotation wa = new WatermarkAnnotation(
+            page, 
+            new Rectangle(
+                _model.Position.Llx, 
+                _model.Position.Lly, 
+                _model.Position.Urx,
+                _model.Position.Ury));
 
         //Add annotaiton into Annotation collection of Page
         page.Annotations.Add(wa);
@@ -49,6 +55,6 @@ public class WatermarkAnnotator : IAnnotator
         wa.SetTextAndState(new string[] { "HELLO", "Line 1", "Line 2" }, ts);
 
         //Save the Document
-        doc.Save(Path.Combine(_workFolder, _outputFile));
+        document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

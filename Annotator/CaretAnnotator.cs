@@ -24,7 +24,13 @@ public class CaretAnnotator : IAnnotator
         // Load the PDF file
         Document document = new Document(Path.Combine(_workFolder, _inputFile));
         // This annotation is used to indicate the insertion of text
-        var caretAnnotation1 = new CaretAnnotation(document.Pages[1], new Rectangle(299.988, 713.664, 308.708, 720.769))
+        var caretAnnotation1 = new CaretAnnotation(
+            document.Pages[_model.Position.PageNumber], 
+            new Rectangle(
+                _model.Position.Llx, 
+                _model.Position.Lly, 
+                _model.Position.Urx,
+                _model.Position.Ury))
         {
             Title = "Aspose User",
             Subject = "Inserted text 1",
