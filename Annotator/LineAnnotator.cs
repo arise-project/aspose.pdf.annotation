@@ -31,7 +31,8 @@ public class LineAnnotator : IAnnotator
                 _model.Position.Llx, 
                 _model.Position.Lly, 
                 _model.Position.Urx,
-                _model.Position.Ury),
+                _model.Position.Ury,
+                _model.Position.NormalizeCoordinates),
             new Point(556, 99), new Point(556, 443))
         {
             Title = "John Smith",

@@ -31,7 +31,8 @@ public class CircleAnnotator : IAnnotator
                 _model.Position.Llx, 
                 _model.Position.Lly, 
                 _model.Position.Urx,
-                _model.Position.Ury))
+                _model.Position.Ury,
+                _model.Position.NormalizeCoordinates))
         {
             Title = "John Smith",
             Subject = "Circle",

@@ -31,7 +31,8 @@ public class PolyLineAnnotator : IAnnotator
                 _model.Position.Llx, 
                 _model.Position.Lly, 
                 _model.Position.Urx,
-                _model.Position.Ury),
+                _model.Position.Ury,
+                _model.Position.NormalizeCoordinates),
             new Point[] {
                 new Point(274, 381),
                 new Point(555, 381),

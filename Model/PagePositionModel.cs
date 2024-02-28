@@ -1,9 +1,7 @@
 namespace aspose.pdf.annotation.Model;
 
-public class PagePositionModel
+public class PagePositionModel : PageModel
 {
-    public int PageNumber { get; set; }
-
     ///X of lower left corner
     public double Llx { get; set; }
     

@@ -39,7 +39,8 @@ public class InkAnnotator : IAnnotator
                 _model.Position.Llx, 
                 _model.Position.Lly, 
                 _model.Position.Urx,
-                _model.Position.Ury), inkList)
+                _model.Position.Ury,
+                _model.Position.NormalizeCoordinates), inkList)
         {
             Title = "John Smith",
             Subject = "Pencil",

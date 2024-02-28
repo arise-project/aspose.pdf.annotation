@@ -31,7 +31,8 @@ public class TextAnnotator : IAnnotator
                 _model.Position.Llx, 
                 _model.Position.Lly, 
                 _model.Position.Urx,
-                _model.Position.Ury));
+                _model.Position.Ury,
+                _model.Position.NormalizeCoordinates));
         textAnnotation.Title = "Sample Annotation Title";
         textAnnotation.Subject = "Sample Subject";
         // ? textAnnotation.State = AnnotationState.Accepted;

@@ -30,7 +30,8 @@ public class CaretAnnotator : IAnnotator
                 _model.Position.Llx, 
                 _model.Position.Lly, 
                 _model.Position.Urx,
-                _model.Position.Ury))
+                _model.Position.Ury,
+                _model.Position.NormalizeCoordinates))
         {
             Title = "Aspose User",
             Subject = "Inserted text 1",
