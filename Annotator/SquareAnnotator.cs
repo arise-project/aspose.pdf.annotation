@@ -8,18 +8,22 @@ public class SquareAnnotator : IAnnotator
 {
     private readonly SquareModel _model;
     private readonly string _workFolder;
+    private readonly string _inputFile;
+    private readonly string _outputFile;
 
-    public SquareAnnotator(SquareModel model, string workFolder)
+    public SquareAnnotator(SquareModel model, string workFolder, string inputFile, string outputFile)
     {
         _model = model;
         _workFolder = workFolder;
+        _inputFile = inputFile;
+        _outputFile = outputFile;
     }
 
     public void Add()
     {
         var dataDir = "<path-to-file>";
         // Load the PDF file
-        Document document = new Document(System.IO.Path.Combine(dataDir, "appartments.pdf"));
+        Document document = new Document(Path.Combine(dataDir, _inputFile));
 
         // Create Square Annotation
         var squareAnnotation = new SquareAnnotation(document.Pages[1], new Rectangle(67, 317, 261, 459))
@@ -34,6 +38,6 @@ public class SquareAnnotator : IAnnotator
 
         // Add annotation to the page
         document.Pages[1].Annotations.Add(squareAnnotation);
-        document.Save(System.IO.Path.Combine(dataDir, "appartments_mod.pdf"));
+        document.Save(Path.Combine(dataDir, _outputFile));
     }
 }

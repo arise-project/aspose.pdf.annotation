@@ -8,17 +8,21 @@ public class InkAnnotator : IAnnotator
 {
     private readonly InkModel _model;
     private readonly string _workFolder;
+    private readonly string _inputFile;
+    private readonly string _outputFile;
 
-    public InkAnnotator(InkModel model, string workFolder)
+    public InkAnnotator(InkModel model, string workFolder, string inputFile, string outputFile)
     {
         _model = model;
         _workFolder = workFolder;
+        _inputFile = inputFile;
+        _outputFile = outputFile;
     }
 
     public void Add()
     {
         // Load the PDF file
-        Document document = new Document(System.IO.Path.Combine(_workFolder, "appartments.pdf"));
+        Document document = new Document(Path.Combine(_workFolder, _inputFile));
         Page page = document.Pages[1];
 
         Rectangle arect = new Rectangle(156.574, 521.316, 541.168, 575.703);
@@ -48,6 +52,6 @@ public class InkAnnotator : IAnnotator
         page.Annotations.Add(ia);
 
 // Save output file
-        document.Save(System.IO.Path.Combine(_workFolder, "appartments_mod.pdf"));
+        document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

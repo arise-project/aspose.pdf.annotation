@@ -8,17 +8,21 @@ public class CircleAnnotator : IAnnotator
 {
     private readonly CircleModel _model;
     private readonly string _workFolder;
+    private readonly string _inputFile;
+    private readonly string _outputFile;
 
-    public CircleAnnotator(CircleModel model, string workFolder)
+    public CircleAnnotator(CircleModel model, string workFolder, string inputFile, string outputFile)
     {
         _model = model;
         _workFolder = workFolder;
+        _inputFile = inputFile;
+        _outputFile = outputFile;
     }
 
     public void Add()
     {
         // Load the PDF file
-        Document document = new Document(System.IO.Path.Combine(_workFolder, "appartments.pdf"));
+        Document document = new Document(Path.Combine(_workFolder, _inputFile));
 
         // Create Cirlce Annotation
         var circleAnnotation = new CircleAnnotation(document.Pages[1], new Rectangle(270, 160, 483, 383))
@@ -33,6 +37,6 @@ public class CircleAnnotator : IAnnotator
 
         // Add annotation to the page
         document.Pages[1].Annotations.Add(circleAnnotation);
-        document.Save(System.IO.Path.Combine(_workFolder, "appartments_mod.pdf"));
+        document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

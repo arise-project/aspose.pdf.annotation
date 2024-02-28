@@ -8,17 +8,21 @@ public class PolyLineAnnotator : IAnnotator
 {
     private readonly PolyLineModel _model;
     private readonly string _workFolder;
+    private readonly string _inputFile;
+    private readonly string _outputFile;
 
-    public PolyLineAnnotator(PolyLineModel model, string workFolder)
+    public PolyLineAnnotator(PolyLineModel model, string workFolder, string inputFile, string outputFile)
     {
         _model = model;
         _workFolder = workFolder;
+        _inputFile = inputFile;
+        _outputFile = outputFile;
     }
 
     public void Add()
     {
         // Load the PDF file
-        Document document = new Document(System.IO.Path.Combine(_workFolder, "appartments.pdf"));
+        Document document = new Document(Path.Combine(_workFolder, _inputFile));
 
         // Create Polygon Annotation
         var polygonAnnotation = new PolygonAnnotation(document.Pages[1],
@@ -57,6 +61,6 @@ public class PolyLineAnnotator : IAnnotator
         // Add annotation to the page
         document.Pages[1].Annotations.Add(polygonAnnotation);
         document.Pages[1].Annotations.Add(polylineAnnotation);
-        document.Save(System.IO.Path.Combine(_workFolder, "appartments_mod.pdf"));
+        document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

@@ -7,17 +7,21 @@ public class StampAnnotator : IAnnotator
 {
     private readonly StampModel _model;
     private readonly string _workFolder;
+    private readonly string _inputFile;
+    private readonly string _outputFile;
 
-    public StampAnnotator(StampModel model, string workFolder)
+    public StampAnnotator(StampModel model, string workFolder, string inputFile, string outputFile)
     {
         _model = model;
         _workFolder = workFolder;
+        _inputFile = inputFile;
+        _outputFile = outputFile;
     }
 
     public void Add()
     {
         // Open document
-        Document pdfDocument = new Document(_workFolder + "AddImageStamp.pdf");
+        Document pdfDocument = new Document(Path.Combine(_workFolder, _inputFile));
 
         // Create image stamp
         ImageStamp imageStamp = new ImageStamp(_workFolder + "aspose-logo.jpg");
@@ -32,6 +36,6 @@ public class StampAnnotator : IAnnotator
         pdfDocument.Pages[1].AddStamp(imageStamp);
 
         // Save output document
-        pdfDocument.Save(_workFolder + "AddImageStamp_out.pdf");
+        pdfDocument.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

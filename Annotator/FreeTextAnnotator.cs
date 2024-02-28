@@ -9,16 +9,20 @@ public class FreeTextAnnotator : IAnnotator
 {
     private readonly FreeTextModel _model;
     private readonly string _workFolder;
+    private readonly string _inputFile;
+    private readonly string _outputFile;
 
-    public FreeTextAnnotator(FreeTextModel model, string workFolder)
+    public FreeTextAnnotator(FreeTextModel model, string workFolder, string inputFile, string outputFile)
     {
         _model = model;
         _workFolder = workFolder;
+        _inputFile = inputFile;
+        _outputFile = outputFile;
     }
 
     public void Add()
     {
-        var _document = new Document(_workFolder+ @"pdf-sample.pdf");
+        var _document = new Document(Path.Combine(_workFolder, _inputFile));
         var pdfContentEditor = new PdfContentEditor(_document);
         var tfs = new TextFragmentAbsorber();
         tfs.Visit(_document.Pages[1]);
@@ -32,6 +36,6 @@ public class FreeTextAnnotator : IAnnotator
         };
 
         pdfContentEditor.CreateFreeText(rect, "Free Text Demo", 1); // last param is a page number
-        pdfContentEditor.Save(_workFolder + @"pdf-sample-0.pdf");
+        pdfContentEditor.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

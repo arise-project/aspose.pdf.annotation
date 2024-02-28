@@ -9,17 +9,21 @@ public class WatermarkAnnotator : IAnnotator
 {
     private readonly WatermarkModel _model;
     private readonly string _workFolder;
+    private readonly string _inputFile;
+    private readonly string _outputFile;
 
-    public WatermarkAnnotator(WatermarkModel model, string workFolder)
+    public WatermarkAnnotator(WatermarkModel model, string workFolder, string inputFile, string outputFile)
     {
         _model = model;
         _workFolder = workFolder;
+        _inputFile = inputFile;
+        _outputFile = outputFile;
     }
     
     public void Add()
     {
         //Load a Document
-        Document doc = new Document(_workFolder + "source.pdf");
+        Document doc = new Document(Path.Combine(_workFolder, _inputFile));
 
         //Load Page object to add Annotation
         Page page = doc.Pages[1];
@@ -45,6 +49,6 @@ public class WatermarkAnnotator : IAnnotator
         wa.SetTextAndState(new string[] { "HELLO", "Line 1", "Line 2" }, ts);
 
         //Save the Document
-        doc.Save(_workFolder + "Output.pdf");
+        doc.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

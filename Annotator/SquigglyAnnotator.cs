@@ -8,17 +8,21 @@ public class SquigglyAnnotator : IAnnotator
 {
     private readonly SquigglyModel _model;
     private readonly string _workFolder;
+    private readonly string _inputFile;
+    private readonly string _outputFile;
 
-    public SquigglyAnnotator(SquigglyModel model, string workFolder)
+    public SquigglyAnnotator(SquigglyModel model, string workFolder, string inputFile, string outputFile)
     {
         _model = model;
         _workFolder = workFolder;
+        _inputFile = inputFile;
+        _outputFile = outputFile;
     }
 
     public void Add()
     {
         // Load the PDF file
-        Document document = new Document(System.IO.Path.Combine(_workFolder, "sample.pdf"));
+        Document document = new Document(Path.Combine(_workFolder, _inputFile));
         var tfa = new Aspose.Pdf.Text.TextFragmentAbsorber("PDF");
         tfa.Visit(document.Pages[1]);
         
@@ -31,6 +35,6 @@ public class SquigglyAnnotator : IAnnotator
         
         // Add annotation to the page
         document.Pages[1].Annotations.Add(squigglyAnnotation);
-        document.Save(System.IO.Path.Combine(_workFolder, "sample_mod.pdf"));
+        document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

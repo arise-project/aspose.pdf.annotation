@@ -8,17 +8,21 @@ public class TextAnnotator : IAnnotator
 {
     private readonly TextModel _model;
     private readonly string _workFolder;
+    private readonly string _inputFile;
+    private readonly string _outputFile;
 
-    public TextAnnotator(TextModel model, string workFolder)
+    public TextAnnotator(TextModel model, string workFolder, string inputFile, string outputFile)
     {
         _model = model;
         _workFolder = workFolder;
+        _inputFile = inputFile;
+        _outputFile = outputFile;
     }
     
     public void Add()
     {
         // Open document
-        Document pdfDocument = new Document(_workFolder + "AddAnnotation.pdf");
+        Document pdfDocument = new Document(Path.Combine(_workFolder, _inputFile));
 
         // Create annotation
         TextAnnotation textAnnotation = new TextAnnotation(pdfDocument.Pages[1], new Aspose.Pdf.Rectangle(200, 400, 400, 600));
@@ -38,6 +42,6 @@ public class TextAnnotator : IAnnotator
         // Add annotation in the annotations collection of the page
         pdfDocument.Pages[1].Annotations.Add(textAnnotation);
         // Save output file
-        pdfDocument.Save(_workFolder + "AddAnnotation_out.pdf");
+        pdfDocument.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

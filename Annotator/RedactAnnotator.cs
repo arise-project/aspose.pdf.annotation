@@ -8,17 +8,21 @@ public class RedactAnnotator : IAnnotator
 {
     private readonly RedactModel _model;
     private readonly string _workFolder;
+    private readonly string _inputFile;
+    private readonly string _outputFile;
 
-    public RedactAnnotator(RedactModel model, string workFolder)
+    public RedactAnnotator(RedactModel model, string workFolder, string inputFile, string outputFile)
     {
         _model = model;
         _workFolder = workFolder;
+        _inputFile = inputFile;
+        _outputFile = outputFile;
     }
 
     public void Add()
     {
         // Open document
-        Document doc = new Document(_workFolder + "input.pdf");
+        Document doc = new Document(Path.Combine(_workFolder, _inputFile));
 
         // Create RedactionAnnotation instance for specific page region
         RedactionAnnotation annot = new RedactionAnnotation(doc.Pages[1], new Aspose.Pdf.Rectangle(200, 500, 300, 600));
@@ -35,6 +39,6 @@ public class RedactAnnotator : IAnnotator
         // Flattens annotation and redacts page contents (i.e. removes text and image
         // Under redacted annotation)
         annot.Redact();
-        doc.Save(_workFolder + "RedactPage_out.pdf");
+        doc.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

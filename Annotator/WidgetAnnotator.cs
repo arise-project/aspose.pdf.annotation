@@ -9,16 +9,20 @@ public class WidgetAnnotator : IAnnotator
 {
     private readonly WidgetModel _model;
     private readonly string _workFolder;
+    private readonly string _inputFile;
+    private readonly string _outputFile;
 
-    public WidgetAnnotator(WidgetModel model, string workFolder)
+    public WidgetAnnotator(WidgetModel model, string workFolder, string inputFile, string outputFile)
     {
         _model = model;
         _workFolder = workFolder;
+        _inputFile = inputFile;
+        _outputFile = outputFile;
     }
     
     public void Add()
     {
-        var document = new Document(_workFolder + "text.pdf");
+        var document = new Document(Path.Combine(_workFolder, _inputFile));
         var page = document.Pages.Add();
         var rect = new Rectangle(72, 748, 164, 768);
         var printButton = new ButtonField(page, rect)
@@ -40,6 +44,6 @@ public class WidgetAnnotator : IAnnotator
             System.Drawing.Color.FromArgb(255, 0, 191, 255);
         document.Form.Add(printButton);
         
-        document.Save(_workFolder + "Output.pdf");
+        document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }

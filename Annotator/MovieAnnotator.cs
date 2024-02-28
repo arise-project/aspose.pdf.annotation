@@ -8,17 +8,21 @@ public class MovieAnnotator : IAnnotator
 {
     private readonly MovieModel _model;
     private readonly string _workFolder;
+    private readonly string _inputFile;
+    private readonly string _outputFile;
 
-    public MovieAnnotator(MovieModel model, string workFolder)
+    public MovieAnnotator(MovieModel model, string workFolder, string inputFile, string outputFile)
     {
         _model = model;
         _workFolder = workFolder;
+        _inputFile = inputFile;
+        _outputFile = outputFile;
     }
 
     public void Add()
     {
         // Load the PDF file
-        Document document = new Document(System.IO.Path.Combine(_workFolder, "sample.pdf"));
+        Document document = new Document(Path.Combine(_workFolder, _inputFile));
 
         var mediaFile = System.IO.Path.Combine("./examples", "input.swf");
         // Create Screen Annotation
@@ -28,6 +32,6 @@ public class MovieAnnotator : IAnnotator
             mediaFile);
         document.Pages[1].Annotations.Add(screenAnnotation);
 
-        document.Save(System.IO.Path.Combine(_workFolder, "sample_swf.pdf"));
+        document.Save(Path.Combine(_workFolder, _outputFile));
     }
 }
