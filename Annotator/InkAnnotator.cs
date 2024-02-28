@@ -34,10 +34,10 @@ public class InkAnnotator : IAnnotator
                 _model.Position.Urx,
                 _model.Position.Ury,
                 _model.Position.NormalizeCoordinates),
-            _model
+            (IList<Point[]>)new List<Point[]> { _model
                 .Points
                 .Select(p => new Point(p.X, p.Y))
-                .ToList())
+                .ToArray() })
         {
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,

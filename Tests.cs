@@ -6,9 +6,9 @@ namespace aspose.pdf.annotation
     {
         public void Run()
         {
-            new CaretAnnotator(new CaretModel(), "./examples", "test.pdf", "caret.pdf").Save();
-            new CircleAnnotator(new CircleModel(), "./examples", "test.pdf", "circle.pdf").Save();
-            new FreeTextAnnotator(new FreeTextModel(), "./examples", "test.pdf", "free-text.pdf").Save();
+            //new CaretAnnotator(new CaretModel(), "./examples", "test.pdf", "caret.pdf").Save();
+            //new CircleAnnotator(new CircleModel(), "./examples", "test.pdf", "circle.pdf").Save();
+            //new FreeTextAnnotator(new FreeTextModel(), "./examples", "test.pdf", "free-text.pdf").Save();
             new HighlightAnnotator(new HighlightModel(), "./examples", "test.pdf", "highlight.pdf").Save();
             new InkAnnotator(new InkModel(), "./examples", "test.pdf", "ink.pdf").Save();
             new LineAnnotator(new LineModel(), "./examples", "test.pdf", "line.pdf").Save();
