@@ -20,12 +20,24 @@ public class LineModel
     public int Width { get; set; } = 50;
 
     [JsonIgnore]
-    public LineEnding StartingStyleValue { get; set; } = LineEnding.Circle;
+    public LineEnding StartingStyleValue
+    {
+        get
+        {
+            return (LineEnding)Enum.Parse(typeof(LineEnding), StartingStyle);
+        }
+    }
 
     public string StartingStyle { get; set; } = "Circle";
 
     [JsonIgnore]
-    public LineEnding EndingStyleValue { get; set; } = LineEnding.ClosedArrow;
+    public LineEnding EndingStyleValue
+    {
+        get
+        {
+            return (LineEnding)Enum.Parse(typeof(LineEnding), EndingStyle);
+        }
+    }
 
     public string EndingStyle { get; set; } = "ClosedArrow";
 }

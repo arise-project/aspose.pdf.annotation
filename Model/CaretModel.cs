@@ -12,7 +12,13 @@ public class CaretModel
     public TitleModel Title { get; set; } = new TitleModel();
 
     [JsonIgnore]
-    public AnnotationFlags FlagsValue { get; set; } = AnnotationFlags.Default;
+    public AnnotationFlags FlagsValue
+    {
+        get
+        {
+            return (AnnotationFlags)Enum.Parse(typeof(AnnotationFlags), Flags);
+        }
+    }
 
     public string Flags { get; set; } = "Default";
 }

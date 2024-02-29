@@ -1,4 +1,3 @@
-using Aspose.Pdf;
 using aspose.pdf.annotation.Model.Descriptions;
 using System.Text.Json.Serialization;
 
@@ -14,7 +13,13 @@ public class WatermarkModel
     public double Opacity { get; set; } = 0.5;
 
     [JsonIgnore]
-    public Color ForegroundColorValue { get; set; } = Color.Aqua;
+    public Aspose.Pdf.Color ForegroundColorValue
+    {
+        get
+        {
+            return (Aspose.Pdf.Color)Enum.Parse(typeof(Aspose.Pdf.Color), ForegroundColor);
+        }
+    }
 
     public string ForegroundColor { get; set; } = "Aqua";
 

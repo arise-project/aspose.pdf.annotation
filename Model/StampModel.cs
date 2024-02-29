@@ -22,7 +22,13 @@ public class StampModel
     public int Width { get; set; } = 50;
 
     [JsonIgnore]
-    public Rotation RotateValue { get; set; } = Rotation.on90;
+    public Rotation RotateValue
+    {
+        get
+        {
+            return (Rotation)Enum.Parse(typeof(Rotation), Rotate);
+        }
+    }
 
     public string Rotate { get; set; } = "on90";
 

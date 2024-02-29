@@ -11,7 +11,13 @@ public class TitleModel
     public string Subject { get; set; } = "subject";
 
     [JsonIgnore]
-    public Color ColorValue { get; set; } = Aspose.Pdf.Color.Aqua;
+    public Color? ColorValue 
+    { 
+        get 
+        { 
+            return (Aspose.Pdf.Color)Enum.Parse(typeof(Aspose.Pdf.Color), Color); 
+        } 
+    }
 
     public string Color { get; set; } = "Aqua";
 

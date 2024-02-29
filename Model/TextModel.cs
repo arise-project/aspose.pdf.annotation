@@ -16,7 +16,13 @@ public class TextModel
     public bool Open { get; set; } = true;
 
     [JsonIgnore]
-    public TextIcon IconValue { get; set; } = TextIcon.Comment;
+    public TextIcon IconValue
+    {
+        get
+        {
+            return (TextIcon)Enum.Parse(typeof(TextIcon), Icon);
+        }
+    }
 
     public string Icon { get; set; } = "Comment";
 

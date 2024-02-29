@@ -16,7 +16,13 @@ public class InkModel
     public int Border { get; set; } = 5;
 
     [JsonIgnore]
-    public CapStyle CapStyleValue { get; set; } = Aspose.Pdf.Annotations.CapStyle.Rounded;
+    public CapStyle CapStyleValue
+    {
+        get
+        {
+            return (CapStyle)Enum.Parse(typeof(CapStyle), CapStyle);
+        }
+    }
 
     public string CapStyle { get; set; } = "Rounded";
 }

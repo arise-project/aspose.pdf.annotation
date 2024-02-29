@@ -14,7 +14,13 @@ public class SquareModel
     public PagePositionModel Popup { get; set; } = new PagePositionModel();
 
     [JsonIgnore]
-    public Color InteriorColorValue { get; set; } = Color.Aqua;
+    public Color InteriorColorValue
+    {
+        get
+        {
+            return (Aspose.Pdf.Color)Enum.Parse(typeof(Aspose.Pdf.Color), InteriorColor);
+        }
+    }
 
     public string InteriorColor { get; set; } = "Aqua";
 }
