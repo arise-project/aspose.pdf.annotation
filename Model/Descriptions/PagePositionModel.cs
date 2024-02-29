@@ -1,5 +1,6 @@
 namespace aspose.pdf.annotation.Model.Descriptions;
 
+[Serializable]
 public class PagePositionModel : PageModel
 {
     ///X of lower left corner

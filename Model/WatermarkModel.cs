@@ -1,8 +1,10 @@
 using Aspose.Pdf;
 using aspose.pdf.annotation.Model.Descriptions;
+using System.Text.Json.Serialization;
 
 namespace aspose.pdf.annotation.Model;
 
+[Serializable]
 public class WatermarkModel
 {
     public PagePositionModel Position { get; set; } = new PagePositionModel();
@@ -11,7 +13,8 @@ public class WatermarkModel
 
     public double Opacity { get; set; } = 0.5;
 
-    public Color ForegroundColor { get; set; } = Color.Aqua;
+    [JsonIgnore]
+    public Color ForegroundColorValue { get; set; } = Color.Aqua;
 
     public string Font { get; set; } = "Arial";
 

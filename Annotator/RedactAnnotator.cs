@@ -34,12 +34,12 @@ public class RedactAnnotator : IAnnotator
                 _model.Position.Ury,
                 _model.Position.NormalizeCoordinates))
         {
-            FillColor = _model.FillColor,
-            BorderColor = _model.BorderColor,
-            Color = _model.Color,
+            FillColor = _model.FillColorValue,
+            BorderColor = _model.BorderColorValue,
+            Color = _model.ColorValue,
             // Text to be printed on redact annotation
             OverlayText = _model.OverlayText,
-            TextAlignment = _model.TextAlignment,
+            TextAlignment = _model.TextAlignmentValue,
             // Repat Overlay text over redact Annotation
             Repeat = _model.Repeat
         };

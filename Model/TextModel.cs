@@ -1,8 +1,10 @@
 using aspose.pdf.annotation.Model.Descriptions;
 using Aspose.Pdf.Annotations;
+using System.Text.Json.Serialization;
 
 namespace aspose.pdf.annotation.Model;
 
+[Serializable]
 public class TextModel
 {
     public PagePositionModel Position { get; set; } = new PagePositionModel();
@@ -13,7 +15,8 @@ public class TextModel
 
     public bool Open { get; set; } = true;
 
-    public TextIcon Icon { get; set; } = TextIcon.Comment;
+    [JsonIgnore]
+    public TextIcon IconValue { get; set; } = TextIcon.Comment;
 
     public int Border { get; set; } = 5;
 }

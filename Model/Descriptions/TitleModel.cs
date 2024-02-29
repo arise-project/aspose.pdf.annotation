@@ -1,14 +1,17 @@
 using Aspose.Pdf;
+using System.Text.Json.Serialization;
 
 namespace aspose.pdf.annotation.Model.Descriptions;
 
+[Serializable]
 public class TitleModel
 {
     public string Title { get; set; } = "title";
 
     public string Subject { get; set; } = "subject";
 
-    public Color Color { get; set; } = Color.Aqua;
+    [JsonIgnore]
+    public Color ColorValue { get; set; } = Color.Aqua;
 
     public double Opacity { get; set; } = 0.5;
 }

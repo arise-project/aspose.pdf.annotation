@@ -38,11 +38,11 @@ public class LineAnnotator : IAnnotator
         {
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,
-            Color = _model.Title.Color,
+            Color = _model.Title.ColorValue,
             Opacity = _model.Title.Opacity,
             Width = _model.Width,
-            StartingStyle = _model.StartingStyle,
-            EndingStyle = _model.EndingStyle,
+            StartingStyle = _model.StartingStyleValue,
+            EndingStyle = _model.EndingStyleValue,
             Popup = new PopupAnnotation(
                 document.Pages[_model.Popup.PageNumber], 
                 new Rectangle(

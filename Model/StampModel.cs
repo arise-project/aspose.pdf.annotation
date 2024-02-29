@@ -1,8 +1,10 @@
 using Aspose.Pdf;
 using aspose.pdf.annotation.Model.Descriptions;
+using System.Text.Json.Serialization;
 
 namespace aspose.pdf.annotation.Model;
 
+[Serializable]
 public class StampModel
 {
     public PageModel Page { get; set; } = new PageModel();
@@ -19,7 +21,8 @@ public class StampModel
 
     public int Width { get; set; } = 50;
 
-    public Rotation Rotate { get; set; } = Rotation.on90;
+    [JsonIgnore]
+    public Rotation RotateValue { get; set; } = Rotation.on90;
 
     public double Opacity { get; set; } = 0.5;
 }

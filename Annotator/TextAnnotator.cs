@@ -36,11 +36,11 @@ public class TextAnnotator : IAnnotator
         {
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,
-            Color = _model.Title.Color,
+            Color = _model.Title.ColorValue,
             Opacity = _model.Title.Opacity,
             Contents = _model.Contents,
             Open = _model.Open,
-            Icon = _model.Icon
+            Icon = _model.IconValue
         };
 
         Border border = new Border(textAnnotation);

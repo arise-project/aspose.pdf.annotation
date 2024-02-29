@@ -41,7 +41,7 @@ public class WatermarkAnnotator : IAnnotator
         //Create TextState for Font settings
         TextState ts = new TextState
         {
-            ForegroundColor = _model.ForegroundColor,
+            ForegroundColor = _model.ForegroundColorValue,
             Font = FontRepository.FindFont(_model.Font),
             FontSize = _model.FontSize
         };

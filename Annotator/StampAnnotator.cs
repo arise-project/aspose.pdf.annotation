@@ -31,7 +31,7 @@ public class StampAnnotator : IAnnotator
             YIndent = _model.YIndent,
             Height = _model.Height,
             Width = _model.Width,
-            Rotate = _model.Rotate,
+            Rotate = _model.RotateValue,
             Opacity = _model.Opacity
         };
         

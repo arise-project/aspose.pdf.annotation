@@ -1,8 +1,10 @@
 using Aspose.Pdf;
 using aspose.pdf.annotation.Model.Descriptions;
+using System.Text.Json.Serialization;
 
 namespace aspose.pdf.annotation.Model;
 
+[Serializable]
 public class SquareModel
 {
     public PagePositionModel Position { get; set; } = new PagePositionModel();
@@ -11,5 +13,6 @@ public class SquareModel
     
     public PagePositionModel Popup { get; set; } = new PagePositionModel();
 
-    public Color InteriorColor { get; set; } = Color.Aqua;
+    [JsonIgnore]
+    public Color InteriorColorValue { get; set; } = Color.Aqua;
 }

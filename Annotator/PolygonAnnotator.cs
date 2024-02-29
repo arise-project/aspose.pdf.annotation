@@ -40,7 +40,7 @@ public class PolygonAnnotator : IAnnotator
         {
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,
-            Color = _model.Title.Color,
+            Color = _model.Title.ColorValue,
             Opacity = _model.Title.Opacity,
             InteriorColor = Color.BlueViolet,
             Popup = new PopupAnnotation(

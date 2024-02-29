@@ -1,8 +1,10 @@
 using aspose.pdf.annotation.Model.Descriptions;
 using Aspose.Pdf.Annotations;
+using System.Text.Json.Serialization;
 
 namespace aspose.pdf.annotation.Model;
 
+[Serializable]
 public class InkModel
 {
     public PagePositionModel Position { get; set; } = new PagePositionModel();
@@ -13,5 +15,6 @@ public class InkModel
 
     public int Border { get; set; } = 5;
 
-    public CapStyle CapStyle { get; set; } = CapStyle.Rounded;
+    [JsonIgnore]
+    public CapStyle CapStyleValue { get; set; } = CapStyle.Rounded;
 }

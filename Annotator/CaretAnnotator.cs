@@ -40,8 +40,8 @@ public class CaretAnnotator : IAnnotator
         {
             Title = _model.Title.Title,
             Subject = _model.Title.Subject,
-            Flags = _model.Flags,
-            Color = _model.Title.Color,
+            Flags = _model.FlagsValue,
+            Color = _model.Title.ColorValue,
             Opacity = _model.Title.Opacity
         };
 

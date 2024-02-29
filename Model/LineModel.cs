@@ -1,9 +1,10 @@
-using System.Net.NetworkInformation;
 using aspose.pdf.annotation.Model.Descriptions;
 using Aspose.Pdf.Annotations;
+using System.Text.Json.Serialization;
 
 namespace aspose.pdf.annotation.Model;
 
+[Serializable]
 public class LineModel
 {
     public PagePositionModel Position { get; set; } = new PagePositionModel();
@@ -18,7 +19,9 @@ public class LineModel
 
     public int Width { get; set; } = 50;
 
-    public LineEnding StartingStyle { get; set; } = LineEnding.Circle;
+    [JsonIgnore]
+    public LineEnding StartingStyleValue { get; set; } = LineEnding.Circle;
 
-    public LineEnding EndingStyle { get; set; } = LineEnding.ClosedArrow;
+    [JsonIgnore]
+    public LineEnding EndingStyleValue { get; set; } = LineEnding.ClosedArrow;
 }

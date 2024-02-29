@@ -2,6 +2,7 @@ using aspose.pdf.annotation.Model.Descriptions;
 
 namespace aspose.pdf.annotation.Model;
 
+[Serializable]
 public class UnderlineModel
 {
     public PageModel Page { get; set; } = new PageModel();
