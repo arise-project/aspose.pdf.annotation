@@ -22,6 +22,10 @@ public class LineModel
     [JsonIgnore]
     public LineEnding StartingStyleValue { get; set; } = LineEnding.Circle;
 
+    public string StartingStyle { get; set; } = "Circle";
+
     [JsonIgnore]
     public LineEnding EndingStyleValue { get; set; } = LineEnding.ClosedArrow;
+
+    public string EndingStyle { get; set; } = "ClosedArrow";
 }

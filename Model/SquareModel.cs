@@ -15,4 +15,6 @@ public class SquareModel
 
     [JsonIgnore]
     public Color InteriorColorValue { get; set; } = Color.Aqua;
+
+    public string InteriorColor { get; set; } = "Aqua";
 }

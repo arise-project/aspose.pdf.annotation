@@ -18,5 +18,7 @@ public class TextModel
     [JsonIgnore]
     public TextIcon IconValue { get; set; } = TextIcon.Comment;
 
+    public string Icon { get; set; } = "Comment";
+
     public int Border { get; set; } = 5;
 }

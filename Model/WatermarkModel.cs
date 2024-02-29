@@ -16,6 +16,8 @@ public class WatermarkModel
     [JsonIgnore]
     public Color ForegroundColorValue { get; set; } = Color.Aqua;
 
+    public string ForegroundColor { get; set; } = "Aqua";
+
     public string Font { get; set; } = "Arial";
 
     public int FontSize { get; set; } = 20;

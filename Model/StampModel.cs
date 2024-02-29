@@ -24,5 +24,7 @@ public class StampModel
     [JsonIgnore]
     public Rotation RotateValue { get; set; } = Rotation.on90;
 
+    public string Rotate { get; set; } = "on90";
+
     public double Opacity { get; set; } = 0.5;
 }

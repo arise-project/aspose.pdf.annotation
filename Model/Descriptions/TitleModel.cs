@@ -11,7 +11,9 @@ public class TitleModel
     public string Subject { get; set; } = "subject";
 
     [JsonIgnore]
-    public Color ColorValue { get; set; } = Color.Aqua;
+    public Color ColorValue { get; set; } = Aspose.Pdf.Color.Aqua;
+
+    public string Color { get; set; } = "Aqua";
 
     public double Opacity { get; set; } = 0.5;
 }

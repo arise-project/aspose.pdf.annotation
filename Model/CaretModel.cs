@@ -13,4 +13,6 @@ public class CaretModel
 
     [JsonIgnore]
     public AnnotationFlags FlagsValue { get; set; } = AnnotationFlags.Default;
+
+    public string Flags { get; set; } = "Default";
 }

@@ -14,5 +14,7 @@ public class CircleModel
     [JsonIgnore]
     public Color InteriorColorValue { get; set; } = Color.Aqua;
 
+    public string InteriorColor { get; set; } = "Aqua";
+
     public PagePositionModel Popup { get; set; } = new PagePositionModel();
 }
